@@ -1,0 +1,95 @@
+test1
+<style>
+	#shihanhin {
+		display:  none;
+	}
+
+	#tezukuri {
+		display:  none;
+	}
+</style>
+<script>
+$(function() {
+	if ($('#kind').find('option:selected').val() == "市販品") {
+		$('#shihanhin').show();
+	}
+	if ($('#kind').find('option:selected').val() == "手作り") {
+		$('#tezukuri').show();
+	}
+
+
+  $('#kind').on('change', function() {
+  	if ($(this).find('option:selected').val() == "市販品") {
+  		$('#shihanhin').show();
+  	}
+  	if ($(this).find('option:selected').val() == "手作り") {
+  		$('#tezukuri').show();
+  	}
+  });
+});
+</script>
+
+<div>
+	<select id="kind">
+		<option value="">-- 選択 --</option>
+		<option value="市販品" selected>市販品</option>
+		<option value="手作り">手作り</option>
+	</select>
+</div>
+
+<section id="shihanhin">
+<!-- 市販品 -->
+  <div>
+    <label>〇〇〇<input type="text"></label>
+    <label>〇〇〇<input type="text"></label>
+    <label>〇〇〇<input type="text"></label>
+    <button type="submit">投稿</button>
+  </div>
+</section>
+
+<section id="tezukuri">
+<!-- 手作り -->
+  <div>
+    <label>〇〇〇<input type="text"></label>
+    <label>〇〇〇<input type="text"></label>
+    <label>〇〇〇<input type="text"></label>
+    <button type="submit">投稿</button>
+  </div>
+</section>
+
+
+test2.html
+<script>
+$(function() {
+  $('#kind').on('change', function() {
+  	if ($(this).find('option:selected').val() == "市販品") {
+  		$('#span-1').text('項目　市販品1');
+  		$('#span-2').text('項目　市販品2');
+  		$('#span-3').text('項目　市販品3');
+
+  	}
+  	if ($(this).find('option:selected').val() == "手作り") {
+  		$('#span-1').text('項目　手作り1');
+  		$('#span-2').text('項目　手作り2');
+  		$('#span-3').text('項目　手作り3');
+  	}
+  });
+});
+</script>
+
+<div>
+	<select id="kind">
+		<option value="">-- 選択 --</option>
+		<option value="市販品" selected>市販品</option>
+		<option value="手作り">手作り</option>
+	</select>
+</div>
+
+<section id="changeable-form">
+  <div>
+    <label><span id="span-1">〇〇〇</span><input type="text" name="form1"></label>
+    <label><span id="span-2">〇〇〇</span><input type="text" name="form2"></label>
+    <label><span id="span-3">〇〇〇</span><input type="text" name="form3"></label>
+    <button type="submit">投稿</button>
+  </div>
+</section>

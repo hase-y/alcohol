@@ -1,0 +1,57 @@
+      $table->bigIncrements('id');
+            $table->string('zyanru');
+            $table->string('name');
+            $table->string('comment');
+            $table->string('value');
+            $table->string('image_path')->nullable();
+            $table->timestamps();
+        });
+        
+        php artisan serve --port=8080
+        
+        カンマ
+        <p>{{ number_format($row->price) }}</p>
+        //1,000
+        
+        編集機能と削除機能はまだ
+        
+        jquery
+        https://yuu.1000quu.com/jquery_hierselect
+        
+        https://okipapa.okinawa/94/
+        
+        デバッグ
+        dd(Knob::$rules, $request->all());
+        
+        jquenry
+        https://code.jquery.com/jquery-3.6.0.min.js
+        
+         $table->bigIncrements('id');
+             $table->string('zyanru');
+             $table->string('product');
+             $table->string('cooking');
+             $table->string('value');
+             $table->string('recipe');
+             $table->string('comment');
+             $table->string('matching-liquor');
+             $table->string('image_path')->nullable();
+             $table->timestamps();
+    
+               
+                        
+            1,テーブル修正、カラム統一
+            2.artisan freshする
+            1.モデルの修正
+            2.CREATEBLADE修正
+            
+            $knob = new Knob;
+if($request->genre == "tedukuri") {
+  $knob->comment = $request->comment_tedukuri;
+  .
+  .
+}else if($request->genre == "kiseihin") {
+  $knob->comment = $request->comment_kiseihin;
+  .
+  .
+}
+$knob->save();

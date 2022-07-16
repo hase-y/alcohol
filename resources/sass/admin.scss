@@ -1,0 +1,136 @@
+body {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #fff;
+  color: #402e26;
+}
+
+h2 {
+  font-size: 40px;
+  text-align: center;
+}
+
+.col-md-16 {
+  font-size: 15px;
+}
+
+
+.zyanru-bar{
+  float: right;
+  margin: 5px;
+}
+
+.zyanru-bar li{
+  text-align: right;
+  display: inline-block;
+  margin: 5px;
+}
+
+.item{
+  float: left;
+}
+
+.list-liquor li{
+  text-align: center;
+  list-style: none;
+  width: 140px; 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// .item a{
+//   float: right;
+// }
+
+// .liquor-name{
+//   font-weight:bold;
+// }
+
+.list-liquor img{
+  width: 40px;
+  height: 60px;
+}
+  
+.list-knob li{
+  text-align: center;
+  list-style: none;
+  width: 220px; 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.list-knob img{
+  width: 70px;
+  height: 95px;
+}
+
+.list-izakaya li{
+  text-align: center;
+  list-style: none;
+  width: 220px; 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.list-izakaya img{
+  width: 70px;
+  height: 95px;
+}
+
+#shihanhin {
+		display:  none;
+}
+
+#tezukuri {
+		display:  none;
+}
+
+.liquor_image{
+  float: left;
+}
+
+.liquor_explanation{
+  float: right;
+}
+
+
+.edit{
+  margin: 10px;
+}
+
+.navbar-laravel {
+  background-color: #fca800;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.navbar-brand {
+  color: #402e26 !important;
+}
+
+.nav-link {
+  color: #402e26 !important;
+}
+
+.table-dark {
+  color: #402e26;
+}
+
+.list-group-item {
+  border-color: #fff;
+  background-color: #402e26;
+}
+
+.login-box {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.login-header {
+  background-color: rgba(0, 0, 0, 0.25)
+}
+
+.login-body {
+  background-color: rgba(0, 0, 0, 0.25);
+}

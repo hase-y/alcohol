@@ -48,14 +48,14 @@ class IzakayaController extends Controller
   
   public function alone(Request $request)
   {
-      $posts = Izakaya::where('use', '一人のみ向き')->get();
+      $posts = Izakaya::where('use', '一人飲み')->get();
 
       return view('admin.izakaya.alone', ['posts' => $posts ]);
   }
   
   public function others(Request $request)
   {
-      $posts = Izakaya::where('use', 'それ以外')->get();
+      $posts = Izakaya::where('use', '一人飲みでない')->get();
 
       return view('admin.izakaya.others', ['posts' => $posts ]);
   }
@@ -68,6 +68,16 @@ class IzakayaController extends Controller
       }
       return view('admin.izakaya.edit', ['izakaya_form' => $izakaya]);
   }
+  
+    public function detail(Request $request)
+  {
+      $izakaya = Izakaya::find($request->id);
+      if (empty($izakaya)) {
+        abort(404);    
+      }
+      return view('admin.izakaya.detail', ['izakaya_form' => $izakaya]);
+  }
+  
   
   public function update(Request $request)
   {

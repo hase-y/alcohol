@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="container">
-            <h2>登録されてるおつまみ</h2>
+        <h2>登録されてるおつまみ</h2>
         <br>
         <div class="col-md-16">
             <a href="{{ action('Admin\KnobController@add') }}" role="button" class="btn btn-outline-dark">おつまみの登録</a>

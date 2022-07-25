@@ -11,9 +11,8 @@ class Knob extends Model
     public static $rules = array(
         'zyanru' => 'required',
         'product' => 'required',
-        // 'comment_shihanhin' => 'required',
-        // 'comment_tedukuri' => 'required',
-        // 'value' => 'required',
+        'value' => 'required',
+        'comment' => 'required',
         'matching-liquor' => 'required',
     );
 }

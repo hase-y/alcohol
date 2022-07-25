@@ -14,6 +14,18 @@ h2 {
   font-size: 15px;
 }
 
+.home-menu-bar {
+  float: right;
+  margin: 5px;
+}
+
+.home-menu-bar li {
+  font-size: 15px;
+  text-align: right;
+  display: inline-block;
+  margin: 5px;
+}
+
 .zyanru-bar {
   float: right;
   margin: 5px;
@@ -38,8 +50,16 @@ h2 {
   text-overflow: ellipsis;
 }
 
+.detail {
+  color: #000;
+}
+
+.index_name {
+  font-weight: bold;
+}
+
 .list-liquor img {
-  width: 40px;
+  width: auto;
   height: 60px;
 }
 
@@ -53,7 +73,7 @@ h2 {
 }
 
 .list-knob img {
-  width: 70px;
+  width: auto;
   height: 95px;
 }
 
@@ -67,7 +87,7 @@ h2 {
 }
 
 .list-izakaya img {
-  width: 70px;
+  width: auto;
   height: 95px;
 }
 
@@ -77,6 +97,27 @@ h2 {
 
 #tezukuri {
   display: none;
+}
+
+.liquor_image {
+  float: left;
+}
+
+.liquor_explanation {
+  float: right;
+}
+
+.liquor_image img {
+  width: auto;
+  height: 400px;
+}
+
+.liquor_explanation {
+  font-size: 20px;
+}
+
+.col-md-20 {
+  font-weight: bold;
 }
 
 .edit {

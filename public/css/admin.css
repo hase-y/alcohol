@@ -38,8 +38,16 @@ h2 {
   text-overflow: ellipsis;
 }
 
+.detail {
+  color: #000;
+}
+
+.index_name {
+  font-weight: bold;
+}
+
 .list-liquor img {
-  width: 40px;
+  width: auto;
   height: 60px;
 }
 
@@ -53,7 +61,7 @@ h2 {
 }
 
 .list-knob img {
-  width: 70px;
+  width: auto;
   height: 95px;
 }
 
@@ -67,7 +75,7 @@ h2 {
 }
 
 .list-izakaya img {
-  width: 70px;
+  width: auto;
   height: 95px;
 }
 
@@ -85,6 +93,36 @@ h2 {
 
 .liquor_explanation {
   float: right;
+}
+
+.liquor_image img {
+  width: auto;
+  height: 400px;
+}
+
+.izakaya_image {
+  float: left;
+}
+
+.izakaya_explanation {
+  float: right;
+}
+
+.izakaya_image img {
+  width: 350px;
+  height: auto;
+}
+
+.liquor_explanation {
+  font-size: 20px;
+}
+
+.izakaya_explanation {
+  font-size: 15px;
+}
+
+.col-md-20 {
+  font-weight: bold;
 }
 
 .edit {

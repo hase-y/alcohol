@@ -26,10 +26,12 @@
             @foreach($posts as $wine)
             　　<div class="item">
                     <ul>
-                        <li><img src="{{asset('storage/image/'.$wine->image_path)}}"></li>
-                        <li>{{ $wine->name }}</li>
-                        <li>{{ $wine->comment }}</li>
-                        <li>
+                        <a class = "detail" href = "{{ action('Admin\LiquorController@detail', ['id' => $wine->id]) }}">
+                            <li><img src="{{asset('storage/image/'.$wine->image_path)}}"></li>
+                            <li class="index_name">{{ $wine->name }}</li>
+                            <li>{{ $wine->comment }}</li>
+                        </a>
+                            <li>
                             <div>
                                 <a class="edit" href="{{ action('Admin\LiquorController@edit', ['id' => $wine->id]) }}">編集</a>
                                 <a class="edit" href="{{ action('Admin\LiquorController@delete', ['id' => $wine->id]) }}">削除</a>

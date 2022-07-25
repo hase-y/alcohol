@@ -9,17 +9,11 @@
             @foreach($posts as $others)
             　　<div class="item">
                     <ul>
-                        <a class = "detail" href = "{{ action('Admin\IzakayaController@detail', ['id' => $others->id]) }}">
+                        <a class = "detail" href = "{{ action('IzakayaController@detail', ['id' => $others->id]) }}">
                         <li><img src="{{asset('storage/image/'.$others->image_path)}}"></li>
                         <li class="index_name">{{ $others->store }}</li>
                         <li>{{ $others->atmosphere }}</li>
                         </a>
-                        <li>
-                            <div>
-                                <a class="edit" href="{{ action('Admin\IzakayaController@edit', ['id' => $others->id]) }}">編集</a>
-                                <a class="edit" href="{{ action('Admin\IzakayaController@delete', ['id' => $others->id]) }}">削除</a>
-                            </div>
-                        </li>
                     </ul>
             　　</div>
             @endforeach

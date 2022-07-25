@@ -17,13 +17,9 @@ class CreateKnobsTable extends Migration
             $table->bigIncrements('id');
              $table->string('zyanru');
              $table->string('product');
-            //  $table->string('cooking');
-             $table->integer('value');
-             $table->string('recipe');
-             $table->string('comment');
-            //  $table->string('comment_shihanhin');
-            //  $table->string('comment_tedukuri');
-             $table->string('matching-liquor');
+             $table->integer('value')->nullable();
+             $table->string('comment')->nullable();
+             $table->string('matching-liquor')->nullable();
              $table->string('image_path')->nullable();
 
             $table->timestamps();

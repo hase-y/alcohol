@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="container">
-            <h2>登録されてるハイボール</h2>
+        <h2>登録されてるハイボール</h2>
         <br>
         <!--<div class="col-md-16">-->
         <!--    <a href="{{ action('Admin\LiquorController@add') }}" role="button" class="btn btn-outline-dark">お酒の登録</a>-->
@@ -26,15 +26,17 @@
             @foreach($posts as $highball)
             　　<div class="item">
                     <ul>
-                        <li><img src="{{asset('storage/image/'.$highball->image_path)}}"></li>
-                        <li>{{ $highball->name }}</li>
-                        <li>{{ $highball->comment }}</li>
-                        <li>
-                            <div>
-                                <a class="edit" href="{{ action('Admin\LiquorController@edit', ['id' => $highball->id]) }}">編集</a>
-                                <a class="edit" href="{{ action('Admin\LiquorController@delete', ['id' => $highball->id]) }}">削除</a>
-                            </div>
-                        </li>
+                        <a class = "detail" href = "{{ action('Admin\LiquorController@detail', ['id' => $highball->id]) }}">
+                            <li><img src="{{asset('storage/image/'.$highball->image_path)}}"></li>
+                            <li class="index_name">{{ $highball->name }}</li>
+                            <li>{{ $highball->comment }}</li>
+                        </a>
+                            <li>
+                                <div>
+                                    <a class="edit" href="{{ action('Admin\LiquorController@edit', ['id' => $highball->id]) }}">編集</a>
+                                    <a class="edit" href="{{ action('Admin\LiquorController@delete', ['id' => $highball->id]) }}">削除</a>
+                                </div>
+                            </li>
                     </ul>
             　　</div>
             @endforeach

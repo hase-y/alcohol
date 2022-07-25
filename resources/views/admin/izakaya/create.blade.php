@@ -2,7 +2,7 @@
 @extends('layouts.admin')
 
 {{-- admin.blade.phpの@yield('title')に'おすすめ酒登録'を埋め込む --}}
-@section('title', 'お店')
+@section('title', 'お店の登録')
 
 {{-- admin.blade.phpの@yield('content')に以下のタグを埋め込む --}}
 {{-- @section @yeildに情報を表示する --}}
@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 mx-auto">
-                <h2>おすすめのお店の登録</h2>
+                <h2>お店の登録</h2>
                 <form action="{{ action('Admin\IzakayaController@create') }}" method="post" enctype="multipart/form-data">
 
                     @if (count($errors) > 0)
@@ -25,8 +25,8 @@
                         <label class="col-md-3">用途</label>
                         <div class="col-md-9">
                             <select name="use">
-                                <option value="一人のみ向き">一人飲み向き</option>
-                                <option value="それ以外">それ以外</option>
+                                <option value="一人飲み">一人飲み</option>
+                                <option value="一人飲みでない">一人飲みでない</option>
                             </select>
                         </div>
                     </div>

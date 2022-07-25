@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Liquor extends Model
+class Tezukuriknob extends Model
 {
     protected $guarded = array('id');
-
     public static $rules = array(
         'zyanru' => 'required',
-        // 'name' => 'required',
+        'cooking' => 'required',
+        'recipe' => 'required',
         'comment' => 'required',
-        'value' => 'required',
+        'matching-liquor' => 'required',
     );
 }

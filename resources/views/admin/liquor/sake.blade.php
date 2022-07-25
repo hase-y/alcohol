@@ -26,15 +26,17 @@
             @foreach($posts as $sake)
             　　<div class="item">
                     <ul>
-                        <li><img src="{{asset('storage/image/'.$sake->image_path)}}"></li>
-                        <li>{{ $sake->name }}</li>
-                        <li>{{ $sake->comment }}</li>
-                        <li>
-                            <div>
-                                <a class="edit" href="{{ action('Admin\LiquorController@edit', ['id' => $sake->id]) }}">編集</a>
-                                <a class="edit" href="{{ action('Admin\LiquorController@delete', ['id' => $sake->id]) }}">削除</a>
-                            </div>
-                        </li>
+                        <a class = "detail" href = "{{ action('Admin\LiquorController@detail', ['id' => $sake->id]) }}">
+                            <li><img src="{{asset('storage/image/'.$sake->image_path)}}"></li>
+                            <li class="index_name">{{ $sake->name }}</li>
+                            <li>{{ $sake->comment }}</li>
+                        </a>
+                            <li>
+                                <div>
+                                    <a class="edit" href="{{ action('Admin\LiquorController@edit', ['id' => $sake->id]) }}">編集</a>
+                                    <a class="edit" href="{{ action('Admin\LiquorController@delete', ['id' => $sake->id]) }}">削除</a>
+                                </div>
+                            </li>
                     </ul>
             　　</div>
             @endforeach

@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-md-8 mx-auto">
                 <h2>おすすめ酒の詳細</h2>
-                <form action="{{ action('Admin\LiquorController@edit') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ action('Admin\LiquorController@detail') }}" method="post" enctype="multipart/form-data">
 
                     @if (count($errors) > 0)
                         <ul>
@@ -27,17 +27,20 @@
                                 <img src="{{asset('storage/image/'.$liquor_form->image_path)}}">
                             </div>
                     </div>
+                    <br>
                     <div class="liquor_explanation">
-                        <label class="col-md-2">お酒の名前</label>
-                        <div class="col-md-10">
+                        <label class="col-md-20">お酒の名前</label>
+                        <div class="col-md-30">
                             <a>　　{{ $liquor_form->name }}</a>
                         </div>
-                        <label class="col-md-2">コメント</label>
-                        <div class="col-md-10">
+                        <br>
+                        <label class="col-md-20">コメント</label>
+                        <div class="col-md-30">
                             <a>　　{{ $liquor_form->comment }}</a>
                         </div>
-                        <label class="col-md-2">価格</label>
-                        <div class="col-md-10">
+                        <br>
+                        <label class="col-md-20">価格</label>
+                        <div class="col-md-30">
                             <a>　　{{ $liquor_form->value }}　円</a>
                         </div>
                     </div>

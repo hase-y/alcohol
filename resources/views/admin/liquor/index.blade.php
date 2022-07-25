@@ -24,11 +24,11 @@
         <br>
         <div class="list-liquor">
             @foreach($posts as $liquor)
-            　　<div class="item">
+                <div class="item">
                     <ul>
-                        <a class = "liquor_detail" href = "{{ action('Admin\LiquorController@detail', ['id' => $liquor->id]) }}">
+                        <a class = "detail" href = "{{ action('Admin\LiquorController@detail', ['id' => $liquor->id]) }}">
                             <li><img src="{{asset('storage/image/'.$liquor->image_path)}}"></li>
-                            <li>{{ $liquor->name }}</li>
+                            <li class="index_name">{{ $liquor->name }}</li>
                             <li>{{ $liquor->comment }}</li>
                         </a>
                         <li>
@@ -38,7 +38,7 @@
                             </div>
                         </li>
                     </ul>
-            　　</div>
+                </div>
             @endforeach
         </div>
     </div>

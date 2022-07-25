@@ -42,10 +42,24 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::get('izakaya/delete', 'Admin\IzakayaController@delete');
     Route::get('izakaya/alone', 'Admin\IzakayaController@alone');
     Route::get('izakaya/others', 'Admin\IzakayaController@others');
+    Route::get('izakaya/detail', 'Admin\IzakayaController@detail');
     
 });
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/register', 'RegisterController@create');
 Route::get('/liquor', 'LiquorController@index');
+Route::get('liquor/beer', 'LiquorController@beer');
+Route::get('liquor/wine', 'LiquorController@wine');
+Route::get('liquor/whiskey', 'LiquorController@whiskey');
+Route::get('liquor/shochu', 'LiquorController@shochu');
+Route::get('liquor/sake', 'LiquorController@sake');
+Route::get('liquor/sour', 'LiquorController@sour');
+Route::get('liquor/highball', 'LiquorController@highball');
+Route::get('liquor/others', 'LiquorController@others');
+Route::get('liquor/detail', 'LiquorController@detail');
 Route::get('/izakaya', 'IzakayaController@index');
+Route::get('izakaya/alone', 'IzakayaController@alone');
+Route::get('izakaya/others', 'IzakayaController@others');
+Route::get('izakaya/detail', 'IzakayaController@detail');

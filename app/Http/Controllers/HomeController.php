@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
+use App\Liquor;
+use App\Izakaya;
+
 
 class HomeController extends Controller
 {
@@ -21,8 +25,20 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('home');
+        // $posts_liquor = Liquor::all();
+        // $posts_izakaya = Izakaya::all();
+        
+        // $posts_mix = [];
+        //     foreach (array_map(null, $posts_liquor, $posts_izakaya) as [$liquor, $izakaya]) {
+        //     array_push($posts_mix, $liquor, $izakaya);
+        // }
+        // return view('home', ['posts_mix' => $posts_mix]);
+         $posts_liquor = Liquor::all();
+         $posts_izakaya = Izakaya::all(); 
+         $posts_mix = $posts_liquor->zip($posts_izakaya);
+         var_dump($posts_mix->all());
+        return view('home', ['posts_liquor' => $posts_liquor, 'posts_izakaya' => $posts_izakaya ]);
     }
 }

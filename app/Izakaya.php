@@ -16,4 +16,8 @@ class Izakaya extends Model
         'recommendation' => 'required',
         'comment' => 'required',
     );
+    
+    public function user() {
+        return $this->belongsTo('App\Models\User');
+    }
 }

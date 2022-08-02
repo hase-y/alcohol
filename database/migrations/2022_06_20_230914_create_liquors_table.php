@@ -15,6 +15,7 @@ class CreateLiquorsTable extends Migration
     {
         Schema::create('liquors', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('user_id');
             $table->string('zyanru');
             $table->string('name');
             $table->string('comment');

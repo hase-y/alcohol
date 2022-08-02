@@ -16,8 +16,13 @@
                         </a>
                         <li>
                             <div>
+                                @if($rogin_id === $alone->id || $rogin_id ===1)
                                 <a class="edit" href="{{ action('Admin\IzakayaController@edit', ['id' => $alone->id]) }}">編集</a>
                                 <a class="edit" href="{{ action('Admin\IzakayaController@delete', ['id' => $alone->id]) }}">削除</a>
+                                @else
+                                <a class="edit">編集</a>
+                                <a class="delete">削除</a>
+                                @endif
                             </div>
                         </li>
                     </ul>

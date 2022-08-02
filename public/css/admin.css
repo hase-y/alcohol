@@ -38,6 +38,10 @@ h2 {
   text-overflow: ellipsis;
 }
 
+.search {
+  text-align: right;
+}
+
 .detail {
   color: #000;
 }
@@ -54,7 +58,7 @@ h2 {
 .list-knob li {
   text-align: center;
   list-style: none;
-  width: 220px;
+  width: 140px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -62,13 +66,13 @@ h2 {
 
 .list-knob img {
   width: auto;
-  height: 95px;
+  height: 100px;
 }
 
 .list-izakaya li {
   text-align: center;
   list-style: none;
-  width: 220px;
+  width: 140px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -113,12 +117,29 @@ h2 {
   height: auto;
 }
 
+.knob_image {
+  float: left;
+}
+
+.knob_explanation {
+  float: right;
+}
+
+.knob_image img {
+  width: 350px;
+  height: auto;
+}
+
 .liquor_explanation {
   font-size: 20px;
 }
 
 .izakaya_explanation {
   font-size: 15px;
+}
+
+.knob_explanation {
+  font-size: 20px;
 }
 
 .col-md-20 {

@@ -65,7 +65,7 @@
                         </div>
                     </div>
                     @csrf
-                    <input type="submit" class="btn btn-primary" value="登録">
+                    <input type="submit" class="btn btn-outline-dark" value="登録">
                 </form>
             </div>
         </div>

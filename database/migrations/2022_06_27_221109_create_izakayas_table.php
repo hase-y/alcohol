@@ -15,6 +15,7 @@ class CreateIzakayasTable extends Migration
     {
         Schema::create('izakayas', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('user_id');
             $table->string('use');
             $table->string('atmosphere'); 
             $table->string('zyanru');

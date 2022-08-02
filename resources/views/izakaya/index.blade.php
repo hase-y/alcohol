@@ -15,6 +15,8 @@
             </div>
         </div>
         <br>
+        <br>
+        <br>
         <div class="list-izakaya">
             @foreach($posts as $izakaya)
             　　<div class="item">

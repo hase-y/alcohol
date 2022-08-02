@@ -5,7 +5,8 @@
     <div class="container">
             <h2>登録されてるお店</h2>
         <br>
-        <div class="col-md-16">
+        <div class="row">
+            <div class="col-md-12">
             <a href="{{ action('Admin\IzakayaController@add') }}" role="button" class="btn btn-outline-dark">お店の登録</a>
                 <div class="zyanru-bar">
                     <ul>
@@ -14,6 +15,16 @@
                         <li><a href = "izakaya/others">一人飲みでない</a></li>
                     </ul>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8"></div>
+            <div class="search col-md-4">
+                <form action="{{ action('Admin\IzakayaController@index') }}" method="get">
+                <input type="text" class="search" name="search" value="{{ $search }}">
+                 @csrf
+                <input type="submit" class="btn btn-outline-dark" value="検索">
+            </div>
         </div>
         <br>
         <div class="list-izakaya">
@@ -27,8 +38,13 @@
                         </a>
                             <li>
                                 <div>
+                                    @if($rogin_id === $izakaya->id || $rogin_id ===1)
                                     <a class="edit" href="{{ action('Admin\IzakayaController@edit', ['id' => $izakaya->id]) }}">編集</a>
                                     <a class="edit" href="{{ action('Admin\IzakayaController@delete', ['id' => $izakaya->id]) }}">削除</a>
+                                    @else
+                                    <a class="edit">編集</a>
+                                    <a class="delete">削除</a>
+                                    @endif
                                 </div>
                             </li>
                     </ul>

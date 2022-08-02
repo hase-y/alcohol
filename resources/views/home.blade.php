@@ -23,9 +23,9 @@
         @foreach($posts_mix as $mix)
             <div class="item">
                 <ul>
-                    <li><img src="{{asset('storage/image/'.$mix->image_path)}}"></li>
-                    <li class="index_name">{{ $mix->store }}</li>
-                    <li>{{ $mix->atmosphere }}</li>
+                    <!--<li><img src="{{asset('storage/image/'.$mix->image_path)}}"></li>-->
+                    <!--<li class="index_name">{{ $mix->store }}</li>-->
+                    <li>{{ $mix->zyanru }}</li>
                 </ul>
             </div>
         @endforeach

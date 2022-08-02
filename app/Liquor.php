@@ -10,8 +10,12 @@ class Liquor extends Model
 
     public static $rules = array(
         'zyanru' => 'required',
-        // 'name' => 'required',
+        'name' => 'required',
         'comment' => 'required',
-        'value' => 'required',
+        'value' => 'required|numeric',
     );
+    
+    public function user() {
+        return $this->belongsTo('App\Models\User');
+    }
 }

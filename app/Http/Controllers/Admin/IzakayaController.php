@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Izakaya;
+use Illuminate\Support\Facades\Auth;
 
 class IzakayaController extends Controller
 {
@@ -19,6 +20,7 @@ class IzakayaController extends Controller
 
       $izakaya = new Izakaya;
       $form = $request->all();
+      $id = Auth::id();
 
       // フォームから画像が送信されてきたら、保存して、$news->image_path に画像のパスを保存する
       if (isset($form['image'])) {
@@ -34,6 +36,7 @@ class IzakayaController extends Controller
       unset($form['image']);
 
       // データベースに保存する
+      $izakaya->user_id = $id;
       $izakaya->fill($form);
       $izakaya->save();
       
@@ -42,27 +45,40 @@ class IzakayaController extends Controller
   
    public function index(Request $request)
   {
-      $posts = Izakaya::all();
-      return view('admin.izakaya.index', ['posts' => $posts ]);
+    $rogin_id = Auth::id();
+    $search = $request->search;
+      if ($search != '') {
+        $posts = Izakaya::where('use', 'like',  "%$search%")
+                            ->orWhere('atmosphere', 'like',  "%$search%")
+                            ->orWhere('zyanru', 'like',  "%$search%")
+                            ->orWhere('store', 'like',  "%$search%")
+                            ->orWhere('recommendation', 'like',  "%$search%")
+                            ->orWhere('comment', 'like',  "%$search%")->get();
+      } else {
+        $posts = Izakaya::all();
+      }
+      return view('admin.izakaya.index', ['posts' => $posts, 'search' => $search, 'rogin_id' => $rogin_id ]);
   }
   
   public function alone(Request $request)
   {
-      $posts = Izakaya::where('use', '一人飲み')->get();
+    $rogin_id = Auth::id();
+    $posts = Izakaya::where('use', '一人飲み')->get();
 
-      return view('admin.izakaya.alone', ['posts' => $posts ]);
+    return view('admin.izakaya.alone', ['posts' => $posts, 'rogin_id' => $rogin_id ]);
   }
   
   public function others(Request $request)
   {
-      $posts = Izakaya::where('use', '一人飲みでない')->get();
+    $rogin_id = Auth::id();
+    $posts = Izakaya::where('use', '一人飲みでない')->get();
 
-      return view('admin.izakaya.others', ['posts' => $posts ]);
+    return view('admin.izakaya.others', ['posts' => $posts, 'rogin_id' => $rogin_id ]);
   }
   
   public function edit(Request $request)
   {
-      $liquor = Izakaya::find($request->id);
+      $izakaya = Izakaya::find($request->id);
       if (empty($izakaya)) {
         abort(404);    
       }

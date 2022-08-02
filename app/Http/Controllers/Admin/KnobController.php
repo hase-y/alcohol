@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Knob;
+use Illuminate\Support\Facades\Auth;
 
 class KnobController extends Controller
 {
@@ -19,6 +20,7 @@ class KnobController extends Controller
 
       $knob = new Knob;
       $form = $request->all();
+      $id = Auth::id();
       
       if (isset($form['image'])) {
         $path = $request->file('image')->store('public/image');
@@ -32,6 +34,7 @@ class KnobController extends Controller
       // フォームから送信されてきたimageを削除する
       unset($form['image']);
       
+      $knob->user_id = $id;
       $knob->fill($form);
       $knob->save();
 
@@ -40,22 +43,34 @@ class KnobController extends Controller
     
   public function index(Request $request)
   {
-      $posts = Knob::all();
-      return view('admin.knob.index', ['posts' => $posts ]);
+    $rogin_id = Auth::id();
+    $search = $request->search;
+        if ($search != '') {
+          $posts = Knob::where('zyanru', 'like',  "%$search%")
+                            ->orWhere('product', 'like',  "%$search%")
+                            ->orWhere('value', 'like',  "%$search%")
+                            ->orWhere('comment', 'like',  "%$search%")
+                            ->orWhere('matching_liquor', 'like',  "%$search%")->get();
+      } else {
+        $posts = Knob::all();
+      }
+      return view('admin.knob.index', ['posts' => $posts, 'search' => $search, 'rogin_id' => $rogin_id ]);
   }
   
-   public function shinan(Request $request)
+   public function shihan(Request $request)
   {
-      $posts = Knob::where('zyanru', '市販品')->get();
+    $rogin_id = Auth::id();
+    $posts = Knob::where('zyanru', '市販品')->get();
 
-      return view('admin.knob.shihan', ['posts' => $posts ]);
+    return view('admin.knob.shihan', ['posts' => $posts, 'rogin_id' => $rogin_id ]);
   }
   
    public function tezukuri(Request $request)
   {
-      $posts = Knob::where('zyanru', '手作り')->get();
+    $rogin_id = Auth::id();
+    $posts = Knob::where('zyanru', '手作り')->get();
 
-      return view('admin.knob.tezukuri', ['posts' => $posts ]);
+    return view('admin.knob.tezukuri', ['posts' => $posts, 'rogin_id' => $rogin_id ]);
   }
   
    public function edit(Request $request)

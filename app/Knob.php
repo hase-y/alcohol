@@ -11,8 +11,12 @@ class Knob extends Model
     public static $rules = array(
         'zyanru' => 'required',
         'product' => 'required',
-        'value' => 'required',
+        'value' => 'required|numeric',
         'comment' => 'required',
-        'matching-liquor' => 'required',
+        'matching_liquor' => 'required',
     );
+    
+    public function user() {
+        return $this->belongsTo('App\Models\User');
+    }
 }

@@ -1,9 +1,9 @@
 @extends('layouts.admin')
-@section('title', 'それ以外のお店一覧')
+@section('title', '一人飲みでないお店一覧')
 
 @section('content')
     <div class="container">
-        <h2>それ以外のお店</h2>
+        <h2>一人飲みでないお店</h2>
         <br>
         <div class="list-izakaya">
             @foreach($posts as $others)
@@ -16,8 +16,13 @@
                         </a>
                         <li>
                             <div>
+                                @if($rogin_id === $others->id || $rogin_id ===1)
                                 <a class="edit" href="{{ action('Admin\IzakayaController@edit', ['id' => $others->id]) }}">編集</a>
                                 <a class="edit" href="{{ action('Admin\IzakayaController@delete', ['id' => $others->id]) }}">削除</a>
+                                @else
+                                <a class="edit">編集</a>
+                                <a class="delete">削除</a>
+                                @endif
                             </div>
                         </li>
                     </ul>

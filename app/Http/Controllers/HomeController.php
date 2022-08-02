@@ -38,7 +38,7 @@ class HomeController extends Controller
          $posts_liquor = Liquor::all();
          $posts_izakaya = Izakaya::all(); 
          $posts_mix = $posts_liquor->zip($posts_izakaya);
-         var_dump($posts_mix->all());
-        return view('home', ['posts_liquor' => $posts_liquor, 'posts_izakaya' => $posts_izakaya ]);
+        //  print_r($posts_mix->all());
+        return view('home', ['posts_mix' => $posts_mix]);
     }
 }

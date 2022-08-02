@@ -15,11 +15,12 @@ class CreateKnobsTable extends Migration
     {
         Schema::create('knobs', function (Blueprint $table) {
             $table->bigIncrements('id');
+             $table->integer('user_id');
              $table->string('zyanru');
              $table->string('product');
              $table->integer('value')->nullable();
              $table->string('comment')->nullable();
-             $table->string('matching-liquor')->nullable();
+             $table->string('matching_liquor')->nullable();
              $table->string('image_path')->nullable();
 
             $table->timestamps();

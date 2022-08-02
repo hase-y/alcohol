@@ -12,4 +12,6 @@ class MypageController extends Controller
   {
       return view('admin.mypage.mypage');
   }
+  
+  
 }

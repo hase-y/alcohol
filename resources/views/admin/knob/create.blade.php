@@ -54,7 +54,7 @@
                     <div class="form-group row">
                         <label class="col-md-3">これに合うお酒</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" name="matching-liquor" value="{{ old('matching-liquor') }}">
+                            <input type="text" class="form-control" name="matching_liquor" value="{{ old('matching_liquor') }}">
                         </div>
                     </div>
                     

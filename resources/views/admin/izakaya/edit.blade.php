@@ -25,8 +25,8 @@
                         <label class="col-md-3">用途</label>
                         <div class="col-md-9">
                             <select name="use">
-                                <option value="一人のみ向き">一人飲み向き</option>
-                                <option value="それ以外">それ以外</option>
+                                <option value="一人飲み">一人飲み</option>
+                                <option value="一人飲みでない">一人飲みでない</option>
                             </select>
                         </div>
                     </div>
@@ -60,19 +60,19 @@
                     <div class="form-group row">
                         <label class="col-md-3">店名</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" name="store" value="{{ old('store') }}">
+                            <input type="text" class="form-control" name="store" value="{{ $izakaya_form->store }}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-3">おすすめの一品</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" name="recommendation" value="{{ old('recommendation') }}">
+                            <input type="text" class="form-control" name="recommendation" value="{{ $izakaya_form->recommendation }}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-3">コメント</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" name="comment" value="{{ old('comment') }}">
+                            <input type="text" class="form-control" name="comment" value="{{ $izakaya_form->comment }}">
                         </div>
                     </div>
                     <div class="form-group row">

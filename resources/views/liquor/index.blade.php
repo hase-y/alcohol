@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="container">
-            <h2>登録されてるお酒</h2>
+        <h2>登録されてるお酒</h2>
         <br>
         <div class="col-md-16">
             <div class="zyanru-bar">
@@ -20,6 +20,8 @@
                 </ul>
             </div>
         </div>
+        <br>
+        <br>
         <br>
         <div class="list-liquor">
             @foreach($posts as $liquor)

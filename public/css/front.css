@@ -14,18 +14,6 @@ h2 {
   font-size: 15px;
 }
 
-.home-menu-bar {
-  float: right;
-  margin: 5px;
-}
-
-.home-menu-bar li {
-  font-size: 15px;
-  text-align: right;
-  display: inline-block;
-  margin: 5px;
-}
-
 .zyanru-bar {
   float: right;
   margin: 5px;
@@ -66,7 +54,7 @@ h2 {
 .list-knob li {
   text-align: center;
   list-style: none;
-  width: 220px;
+  width: 140px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -74,13 +62,13 @@ h2 {
 
 .list-knob img {
   width: auto;
-  height: 95px;
+  height: 100px;
 }
 
 .list-izakaya li {
   text-align: center;
   list-style: none;
-  width: 220px;
+  width: 140px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -112,7 +100,41 @@ h2 {
   height: 400px;
 }
 
+.izakaya_image {
+  float: left;
+}
+
+.izakaya_explanation {
+  float: right;
+}
+
+.izakaya_image img {
+  width: 350px;
+  height: auto;
+}
+
+.knob_image {
+  float: left;
+}
+
+.knob_explanation {
+  float: right;
+}
+
+.knob_image img {
+  width: 350px;
+  height: auto;
+}
+
 .liquor_explanation {
+  font-size: 20px;
+}
+
+.izakaya_explanation {
+  font-size: 15px;
+}
+
+.knob_explanation {
   font-size: 20px;
 }
 
@@ -156,5 +178,10 @@ h2 {
 
 .login-body {
   background-color: rgba(0, 0, 0, 0.25);
+}
+
+#sample {
+  width: 700px;
+  height: auto;
 }
 

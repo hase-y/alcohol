@@ -34,6 +34,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::get('knob/create', 'Admin\KnobController@add');
     Route::post('knob/create', 'Admin\KnobController@create');
     Route::get('knob', 'Admin\KnobController@index');
+    Route::get('knob/shihan', 'Admin\KnobController@shihan');
+    Route::get('knob/tezukuri', 'Admin\KnobController@tezukuri');
+    Route::get('knob/edit', 'Admin\KnobController@edit'); 
+    Route::post('knob/edit', 'Admin\KnobController@update'); 
+    Route::get('knob/detail', 'Admin\KnobController@detail');
+    Route::get('knob/delete', 'Admin\KnobController@delete');
     Route::get('izakaya/create', 'Admin\IzakayaController@add');
     Route::post('izakaya/create', 'Admin\IzakayaController@create');
     Route::get('izakaya', 'Admin\IzakayaController@index');
@@ -43,6 +49,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::get('izakaya/alone', 'Admin\IzakayaController@alone');
     Route::get('izakaya/others', 'Admin\IzakayaController@others');
     Route::get('izakaya/detail', 'Admin\IzakayaController@detail');
+    
     
 });
 Auth::routes();
@@ -63,3 +70,7 @@ Route::get('/izakaya', 'IzakayaController@index');
 Route::get('izakaya/alone', 'IzakayaController@alone');
 Route::get('izakaya/others', 'IzakayaController@others');
 Route::get('izakaya/detail', 'IzakayaController@detail');
+Route::get('/knob', 'KnobController@index');
+Route::get('knob/shihan', 'KnobController@shihan');
+Route::get('knob/tezukuri', 'KnobController@tezukuri');
+Route::get('knob/detail', 'KnobController@detail');

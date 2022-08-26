@@ -10,10 +10,10 @@ class Knob extends Model
 
     public static $rules = array(
         'zyanru' => 'required',
-        'product' => 'required',
-        'value' => 'required|numeric',
-        'comment' => 'required',
-        'matching_liquor' => 'required',
+        'product' => 'required|max:64',
+        'value' => 'required|numeric|max:1000000',
+        'comment' => 'required|max:255',
+        'matching_liquor' => 'required|max:64',
     );
     
     public function user() {

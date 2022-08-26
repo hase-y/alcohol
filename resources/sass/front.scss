@@ -1,8 +1,28 @@
+@charset "UTF-8";
+
 body {
   background-repeat: no-repeat;
   background-position: center;
   background-color: #fff;
   color: #402e26;
+}
+
+.noadminpage {
+  display: flex;
+  list-style: none;
+}
+
+.noadminpage li {
+  margin: 5px;
+}
+
+.adminpage {
+  display: flex;
+  list-style: none;
+}
+
+.adminpage li {
+  margin: 5px;
 }
 
 h2 {
@@ -14,136 +34,175 @@ h2 {
   font-size: 15px;
 }
 
-
-.zyanru-bar{
+.home-zyanru-bar {
   float: right;
   margin: 5px;
+  font-size: 15px;
 }
 
-.zyanru-bar li{
+.home-zyanru-bar li {
   text-align: right;
   display: inline-block;
   margin: 5px;
 }
 
-.item{
+.zyanru-bar {
+  float: right;
+  margin: 0 0 0 auto;
+}
+
+.zyanru-bar li {
+  text-align: right;
+  display: inline-block;
+  margin: 5px;
+}
+
+.item {
   float: left;
 }
 
-.list-liquor li{
-  text-align: center;
-  list-style: none;
-  width: 140px; 
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.search {
+  text-align: right;
 }
 
-.detail{
- color: #000; 
+.detail {
+  color: #000;
 }
 
-.index_name{
+.index_name {
   font-weight: bold;
 }
 
-.list-liquor img{
+.list-liquor img {
   width: auto;
   height: 60px;
+  margin-left: auto;
+  margin-right: auto;
 }
-  
-.list-knob li{
+
+.list-liquor {
+  display: flex;
+}
+
+.list-liquor li {
   text-align: center;
   list-style: none;
-  width: 140px; 
+  width: 140px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.list-knob img{
-  width: auto;
-  height: 100px;
+.list-knob {
+  display: flex;
 }
 
-.list-izakaya li{
+.list-knob li {
   text-align: center;
   list-style: none;
-  width: 140px; 
+  width: 140px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.list-izakaya img{
+.list-knob img {
   width: auto;
-  height: 95px;
+  height: 60px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.list-izakaya {
+  display: flex;
+}
+
+.list-izakaya li {
+  text-align: center;
+  list-style: none;
+  width: 140px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.list-izakaya img {
+  width: auto;
+  height: 60px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #shihanhin {
-		display:  none;
+  display: none;
 }
 
 #tezukuri {
-		display:  none;
+  display: none;
 }
 
-.liquor_image{
-  float: left;
+.oya {
+  display: flex;
 }
 
-.liquor_explanation{
-  float: right;
+.liquor_image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 100px;
+  width: 200px;
 }
 
-.liquor_image img{
+.liquor_explanation {
+  font-size: 20px;
+  width: 300px;
+  margin-left: 150px;
+}
+
+.liquor_image img {
   width: auto;
   height: 400px;
 }
 
-.izakaya_image{
-  float: left;
+.izakaya_image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.izakaya_explanation{
-  float: right;
+.izakaya_explanation {
+  font-size: 15px;
+  width: 300px;
+  margin-left: 100px;
 }
 
-.izakaya_image img{
+.izakaya_image img {
   width: 350px;
   height: auto;
 }
 
-.knob_image{
-  float: left;
+.knob_image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.knob_explanation{
-  float: right;
+.knob_explanation {
+  font-size: 15px;
+  width: 300px;
+  margin-left: 100px;
 }
 
-.knob_image img{
+.knob_image img {
   width: 350px;
   height: auto;
 }
 
-.liquor_explanation{
-  font-size:20px;
-}
-
-.izakaya_explanation{
-  font-size:15px;
-}
-
-.knob_explanation{
-  font-size:20px;
-}
-
-.col-md-20{
+.col-md-20 {
   font-weight: bold;
 }
 
-.edit{
+.edit {
   margin: 10px;
 }
 
@@ -174,14 +233,11 @@ h2 {
 }
 
 .login-header {
-  background-color: rgba(0, 0, 0, 0.25)
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .login-body {
-  background-color: rgba(0, 0, 0, 0.25);
+  background-color: rgba(0, 0, 0, 0);
 }
 
-#sample {
- width: 700px;
-   height: auto;
-}

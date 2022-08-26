@@ -93,7 +93,7 @@
                         <div class="col-md-10">
                             <input type="hidden" name="id" value="{{ $izakaya_form->id }}">
                     @csrf
-                    <input type="submit" class="btn btn-primary" value="更新">
+                    <input type="submit" class="btn btn-outline-dark" value="更新">
                 </form>
             </div>
         </div>

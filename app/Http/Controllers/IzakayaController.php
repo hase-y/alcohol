@@ -9,20 +9,30 @@ class IzakayaController extends Controller
 {
      public function index(Request $request)
   {
-      $posts = Izakaya::all();
-      return view('izakaya.index', ['posts' => $posts ]);
+      $search = $request->search;
+      if ($search != '') {
+        $posts = Izakaya::where('use', 'like',  "%$search%")
+                            ->orWhere('atmosphere', 'like',  "%$search%")
+                            ->orWhere('zyanru', 'like',  "%$search%")
+                            ->orWhere('store', 'like',  "%$search%")
+                            ->orWhere('recommendation', 'like',  "%$search%")
+                            ->orWhere('comment', 'like',  "%$search%")->paginate(12);
+      } else {
+        $posts = Izakaya::paginate(12);
+      }
+      return view('izakaya.index', ['posts' => $posts, 'search' => $search ]);
   }
   
   public function alone(Request $request)
   {
-      $posts = Izakaya::where('use', '一人飲み')->get();
+      $posts = Izakaya::where('use', '一人飲み')->paginate(12);
 
       return view('izakaya.alone', ['posts' => $posts ]);
   }
   
   public function others(Request $request)
   {
-      $posts = Izakaya::where('use', '一人飲みでない')->get();
+      $posts = Izakaya::where('use', '一人飲みでない')->paginate(12);
 
       return view('izakaya.others', ['posts' => $posts ]);
   }

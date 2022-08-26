@@ -34,28 +34,24 @@
                                 <option value="ハイボール">ハイボール</option>
                                 <option value="その他">その他</option>
                             </select>
-                            {{--<input type="text" class="form-control" name="title" value="{{ old('title') }}">--}}
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2">お酒の名前</label>
                         <div class="col-md-10">
                             <input type="text" class="form-control" name="name" value="{{ old('name') }}">
-                            <!--<textbox class="form-control" name="name">{{ old('name') }}</textbox>-->
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2">コメント</label>
                         <div class="col-md-10">
                             <input type="text" class="form-control" name="comment" value="{{ old('comment') }}">
-                            <!--<textbox class="form-control" name="comment">{{ old('comment') }}</textarea>-->
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2">価格</label>
                         <div class="col-md-10">
                             <input type="text" class="form-control" name="value" value="{{ old('value') }}">
-                            <!--<textarea class="form-control" name="value">{{ old('value') }}</textarea>-->
                         </div>
                     </div>
                     <div class="form-group row">

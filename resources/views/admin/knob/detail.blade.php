@@ -21,36 +21,38 @@
                         </ul>
                     @endif
                     <br>
-                    <div class="knob_image">
-                            <!--<input type="file" class="form-control-file" name="image">-->
-                            <div class="form-text text-info">
-                                <img src="{{asset('storage/image/'.$knob_form->image_path)}}">
+                    <div class="oya">
+                        <div class="knob_image">
+                                <!--<input type="file" class="form-control-file" name="image">-->
+                                <div class="form-text text-info">
+                                    <img src="{{asset('storage/image/'.$knob_form->image_path)}}">
+                                </div>
+                        </div>
+                        <div class="knob_explanation">
+                            <label class="col-md-20">商品名 or 料理名</label>
+                            <div class="col-md-30">
+                                <a>　{{ $knob_form->product }}</a>
                             </div>
-                    </div>
-                    <div class="knob_explanation">
-                        <label class="col-md-20">商品名 or 料理名</label>
-                        <div class="col-md-30">
-                            <a>　　{{ $knob_form->product }}</a>
-                        </div>
-                        <br>
-                        <label class="col-md-20">価格</label>
-                        <div class="col-md-30">
-                            <a>　　{{ $knob_form->value }}</a>
-                        </div>
-                        <br>
-                        <label class="col-md-20">コメント</label>
-                        <div class="col-md-30">
-                            <a>　　{{ $knob_form->comment }}</a>
-                        </div>
-                        <br>
-                        <label class="col-md-20">ジャンル</label>
-                        <div class="col-md-30">
-                            <a>　　{{ $knob_form->zyanru }}</a>
-                        </div>
-                        <br>
-                        <label class="col-md-20">これに合うお酒</label>
-                        <div class="col-md-30">
-                            <a>　　{{ $knob_form->matching_liquor }}</a>
+                            <br>
+                            <label class="col-md-20">価格</label>
+                            <div class="col-md-30">
+                                <a>　{{ $knob_form->value }}　円</a>
+                            </div>
+                            <br>
+                            <label class="col-md-20">コメント</label>
+                            <div class="col-md-30">
+                                <a>　{{ $knob_form->comment }}</a>
+                            </div>
+                            <br>
+                            <label class="col-md-20">ジャンル</label>
+                            <div class="col-md-30">
+                                <a>　{{ $knob_form->zyanru }}</a>
+                            </div>
+                            <br>
+                            <label class="col-md-20">これに合うお酒</label>
+                            <div class="col-md-30">
+                                <a>　{{ $knob_form->matching_liquor }}</a>
+                            </div>
                         </div>
                     </div>
                 </form>

@@ -5,6 +5,15 @@ body {
   color: #402e26;
 }
 
+.adminpage {
+  display: flex;
+  list-style: none;
+}
+
+.adminpage li {
+  margin: 5px;
+}
+
 h2 {
   font-size: 40px;
   text-align: center;
@@ -14,9 +23,21 @@ h2 {
   font-size: 15px;
 }
 
-.zyanru-bar {
+.home-zyanru-bar {
   float: right;
   margin: 5px;
+  font-size: 20px;
+}
+
+.home-zyanru-bar li {
+  text-align: right;
+  display: inline-block;
+  margin: 5px;
+}
+
+.zyanru-bar {
+  float: right;
+  margin: 0 0 0 auto;
 }
 
 .zyanru-bar li {
@@ -27,6 +48,10 @@ h2 {
 
 .item {
   float: left;
+}
+
+.list-liquor {
+  display: flex;
 }
 
 .list-liquor li {
@@ -55,6 +80,10 @@ h2 {
   height: 60px;
 }
 
+.list-knob {
+  display: flex;
+}
+
 .list-knob li {
   text-align: center;
   list-style: none;
@@ -66,7 +95,11 @@ h2 {
 
 .list-knob img {
   width: auto;
-  height: 100px;
+  height: 60px;
+}
+
+.list-izakaya {
+  display: flex;
 }
 
 .list-izakaya li {
@@ -80,7 +113,7 @@ h2 {
 
 .list-izakaya img {
   width: auto;
-  height: 95px;
+  height: 60px;
 }
 
 #shihanhin {
@@ -91,12 +124,22 @@ h2 {
   display: none;
 }
 
+.oya {
+  display: flex;
+}
+
 .liquor_image {
-  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 100px;
+  width: 200px;
 }
 
 .liquor_explanation {
-  float: right;
+  font-size: 20px;
+  width: 300px;
+  margin-left: 150px;
 }
 
 .liquor_image img {
@@ -105,11 +148,15 @@ h2 {
 }
 
 .izakaya_image {
-  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .izakaya_explanation {
-  float: right;
+  font-size: 15px;
+  width: 300px;
+  margin-left: 100px;
 }
 
 .izakaya_image img {
@@ -118,28 +165,20 @@ h2 {
 }
 
 .knob_image {
-  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .knob_explanation {
-  float: right;
+  font-size: 15px;
+  width: 300px;
+  margin-left: 100px;
 }
 
 .knob_image img {
   width: 350px;
   height: auto;
-}
-
-.liquor_explanation {
-  font-size: 20px;
-}
-
-.izakaya_explanation {
-  font-size: 15px;
-}
-
-.knob_explanation {
-  font-size: 20px;
 }
 
 .col-md-20 {
@@ -177,10 +216,11 @@ h2 {
 }
 
 .login-header {
-  background-color: rgba(0, 0, 0, 0.25);
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .login-body {
-  background-color: rgba(0, 0, 0, 0.25);
+  background-color: rgba(0, 0, 0, 0);
 }
 

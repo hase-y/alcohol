@@ -77,9 +77,9 @@ return [
         'array' => 'The :attribute must not have more than :value items.',
     ],
     'max' => [
-        'numeric' => 'The :attribute may not be greater than :max.',
+        'numeric' => ':attributeは:max字以内で入力してください。',
         'file' => 'The :attribute may not be greater than :max kilobytes.',
-        'string' => 'The :attribute may not be greater than :max characters.',
+        'string' => ':attributeは:max字以内で入力してください。',
         'array' => 'The :attribute may not have more than :max items.',
     ],
     'mimes' => 'The :attribute must be a file of type: :values.',
@@ -147,17 +147,17 @@ return [
     */
 
     'attributes' => [
-        'zyanru' => 'ジャンル',
-        'name' => 'お酒の名前',
-        'comment' => 'コメント',
-        'value' => '価格',
-        'product' => '商品名',
-        'cooking' => '料理名',
-        'matching_liquor' => '合うお酒',
-        'store' => '店名',
-        'recommendation' => 'おすすめの一品',
-        'cooking' => '料理名',
-        'recipe' => 'レシピ'
+        'zyanru' => '[ジャンル]',
+        'name' => '[お酒の名前]',
+        'comment' => '[コメント]',
+        'value' => '[価格]',
+        'product' => '[商品名]',
+        'cooking' => '[料理名]',
+        'matching_liquor' => '[合うお酒]',
+        'store' => '[店名]',
+        'recommendation' => '[おすすめの一品]',
+        'cooking' => '[料理名]',
+        'recipe' => '[レシピ]'
     ],
 
 ];

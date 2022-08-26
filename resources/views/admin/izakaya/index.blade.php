@@ -3,8 +3,8 @@
 
 @section('content')
     <div class="container">
-            <h2>登録されてるお店</h2>
-        <br>
+    <h2>お店の一覧</h2>
+    <br>
         <div class="row">
             <div class="col-md-12">
             <a href="{{ action('Admin\IzakayaController@add') }}" role="button" class="btn btn-outline-dark">お店の登録</a>
@@ -22,34 +22,39 @@
             <div class="search col-md-4">
                 <form action="{{ action('Admin\IzakayaController@index') }}" method="get">
                 <input type="text" class="search" name="search" value="{{ $search }}">
-                 @csrf
+                @csrf
                 <input type="submit" class="btn btn-outline-dark" value="検索">
             </div>
         </div>
         <br>
         <div class="list-izakaya">
+            <div>
             @foreach($posts as $izakaya)
-            　　<div class="item">
+                <div class="item">
                     <ul>
                         <a class = "detail" href = "{{ action('Admin\IzakayaController@detail', ['id' => $izakaya->id]) }}">
                             <li><img src="{{asset('storage/image/'.$izakaya->image_path)}}"></li>
                             <li class="index_name">{{ $izakaya->store }}</li>
                             <li>{{ $izakaya->atmosphere }}</li>
                         </a>
-                            <li>
-                                <div>
-                                    @if($rogin_id === $izakaya->id || $rogin_id ===1)
-                                    <a class="edit" href="{{ action('Admin\IzakayaController@edit', ['id' => $izakaya->id]) }}">編集</a>
-                                    <a class="edit" href="{{ action('Admin\IzakayaController@delete', ['id' => $izakaya->id]) }}">削除</a>
-                                    @else
-                                    <a class="edit">編集</a>
-                                    <a class="delete">削除</a>
-                                    @endif
-                                </div>
-                            </li>
+                        <li>
+                            <div>
+                                @if($rogin_id === $izakaya->user_id || $rogin_id ===1)
+                                <a class="edit" href="{{ action('Admin\IzakayaController@edit', ['id' => $izakaya->id]) }}">編集</a>
+                                <a class="edit" href="{{ action('Admin\IzakayaController@delete', ['id' => $izakaya->id]) }}">削除</a>
+                                @else
+                                <a class="edit">編集</a>
+                                <a class="delete">削除</a>
+                                @endif
+                            </div>
+                        </li>
                     </ul>
-            　　</div>
+                </div>
             @endforeach
+            </div>
+        </div>
+        <div class="page">
+            {{ $posts->links() }}
         </div>
     </div>
 @endsection

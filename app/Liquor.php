@@ -10,9 +10,9 @@ class Liquor extends Model
 
     public static $rules = array(
         'zyanru' => 'required',
-        'name' => 'required',
-        'comment' => 'required',
-        'value' => 'required|numeric',
+        'name' => 'required|max:64',
+        'comment' => 'required|max:255',
+        'value' => 'required|numeric|max:1000000',
     );
     
     public function user() {

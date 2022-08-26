@@ -34,8 +34,9 @@
             {{-- 画面上部に表示するナビゲーションバーです。 --}}
             <nav class="navbar navbar-expand-md navbar-dark navbar-laravel">
                 <div class="container">
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                    <a class="navbar-brand" href="{{ url('/home') }}">
+                        Alcohol Lover
+                        <!--{{ config('app.name', 'ホーム') }}-->
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -46,6 +47,15 @@
                         <ul class="navbar-nav mr-auto">
 
                         </ul>
+                        
+                        <div class="adminpage">
+                            <ul class="navbar-nav mr-auto">
+                                <li>会員用</li>
+                                <li><a class="adminliquor" href="{{ route('admin.liquor')}}">お酒ページ</a></li>
+                                <li><a class="adminizakaya" href="{{ route('admin.izakaya')}}">居酒屋ページ</a></li>
+                                <li><a class="adminknob" href="{{ route('admin.knob')}}">おつまみページ</a></li>
+                            </ul>
+                        </div>
 
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav ml-auto">
@@ -72,7 +82,7 @@
                                     </form>
                                 </div>
                             </li>
-                            @endguest
+                        @endguest
                         </ul>
                     </div>
                 </div>

@@ -15,6 +15,7 @@
         <!-- Scripts -->
          {{-- Laravel標準で用意されているJavascriptを読み込みます --}}
         <script src="{{ secure_asset('js/app.js') }}" defer></script>
+        <script src="{{ secure_asset('js/slick.min.js') }}" defer></script>
 
         {{-- Fonts --}}
         {{-- relでファイルとの関係性を、hrefで そのファイルがある場所（URL）を指定 --}}
@@ -27,6 +28,9 @@
         <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
         {{-- この章の後半で作成するCSSを読み込みます --}}
         <link href="{{ asset('css/front.css') }}" rel="stylesheet">
+        
+        <link rel="stylesheet" type="text/css" href="https://www.jungleocean.com/demo/jquery-slick/css/slick-theme.css"/>
+        <link rel="stylesheet" type="text/css" href="https://www.jungleocean.com/demo/jquery-slick/css/slick.css"/>
     </head>
     <body>
         
@@ -34,8 +38,9 @@
             {{-- 画面上部に表示するナビゲーションバーです。 --}}
             <nav class="navbar navbar-expand-md navbar-dark navbar-laravel">
                 <div class="container">
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                    <a class="navbar-brand" href="{{ url('/home') }}">
+                       Alcohol Lover
+                       <!--{{ config('app.name', 'ホーム') }}-->
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -46,6 +51,25 @@
                         <ul class="navbar-nav mr-auto">
 
                         </ul>
+                        
+                        @guest
+                        <div class="noadminpage">
+                            <ul class="navbar-nav mc-auto">
+                                <li><a class="noadminliquor" href="{{ route('liquor')}}">お酒ページ</a></li>
+                                <li><a class="noadminizakaya" href="{{ route('izakaya')}}">居酒屋ページ</a></li>
+                                <li><a class="noadminknob" href="{{ route('knob')}}">おつまみページ</a></li>
+                            </ul>
+                        </div>
+                        @else
+                        <div class="adminpage">
+                            <ul class="navbar-nav mc-auto">
+                                <li>会員用</li>
+                                <li><a class="adminliquor" href="admin/liquor">お酒ページ</a></li>
+                                <li><a class="izakaya" href="admin/izakaya">居酒屋ページ</a></li>
+                                <li><a class="adminknob" href="admin/knob">おつまみページ</a></li>
+                            </ul>
+                        </div>
+                        @endguest
 
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav ml-auto">

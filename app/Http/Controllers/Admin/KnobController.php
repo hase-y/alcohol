@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Knob;
 use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image; 
 
 class KnobController extends Controller
 {
@@ -23,10 +24,22 @@ class KnobController extends Controller
       $id = Auth::id();
       
       if (isset($form['image'])) {
-        $path = $request->file('image')->store('public/image');
-        $knob->image_path = basename($path);
+        $img_file = $form['image'];
+        $extension = $img_file->extension();
+        //ファイル名作成
+        $img_name = uniqid(mt_rand()) . '.' . $extension;
+        //画像を編集して、保存
+        $img = Image::make($request->file('image'));
+        $img->orientate();
+        $img->resize(600, null,function ($constraint) {
+          $constraint->aspectRatio();
+          $constraint->upsize();}
+          )->save(storage_path(). '/app/public/image/'. $img_name);
+        $img_path = 'storage/image/'.$img_name;
+        $knob->image_path = basename($img_path);
       } else {
-          $knob->image_path = null;
+        $img_path = "storage/image/Noimage.jpg";
+        $knob->image_path = basename($img_path);
       }
 
       // フォームから送信されてきた_tokenを削除する
@@ -38,7 +51,7 @@ class KnobController extends Controller
       $knob->fill($form);
       $knob->save();
 
-      return redirect('admin/knob/create');
+      return redirect('admin/knob');
   }
     
   public function index(Request $request)
@@ -50,9 +63,9 @@ class KnobController extends Controller
                             ->orWhere('product', 'like',  "%$search%")
                             ->orWhere('value', 'like',  "%$search%")
                             ->orWhere('comment', 'like',  "%$search%")
-                            ->orWhere('matching_liquor', 'like',  "%$search%")->get();
+                            ->orWhere('matching_liquor', 'like',  "%$search%")->paginate(12);
       } else {
-        $posts = Knob::all();
+        $posts = Knob::paginate(12);
       }
       return view('admin.knob.index', ['posts' => $posts, 'search' => $search, 'rogin_id' => $rogin_id ]);
   }
@@ -60,7 +73,7 @@ class KnobController extends Controller
    public function shihan(Request $request)
   {
     $rogin_id = Auth::id();
-    $posts = Knob::where('zyanru', '市販品')->get();
+    $posts = Knob::where('zyanru', '市販品')->paginate(12);
 
     return view('admin.knob.shihan', ['posts' => $posts, 'rogin_id' => $rogin_id ]);
   }
@@ -68,7 +81,7 @@ class KnobController extends Controller
    public function tezukuri(Request $request)
   {
     $rogin_id = Auth::id();
-    $posts = Knob::where('zyanru', '手作り')->get();
+    $posts = Knob::where('zyanru', '手作り')->paginate(12);
 
     return view('admin.knob.tezukuri', ['posts' => $posts, 'rogin_id' => $rogin_id ]);
   }
@@ -94,16 +107,29 @@ class KnobController extends Controller
   
   public function update(Request $request)
   {
+      
       $this->validate($request, Knob::$rules);
       $knob = Knob::find($request->id);
       $knob_form = $request->all();
       
-      if ($request->remove == 'true') {
-          $knob_form['image_path'] = null;
-      } elseif ($request->file('image')) {
-          $path = $request->file('image')->store('public/image');
-          $knob_form['image_path'] = basename($path);
-      } else {
+      if($request->remove == 'true'){
+          $img_path = "storage/image/Noimage.jpg";
+          $knob_form['image_path'] = basename($img_path);
+      }elseif($request->file('image')){
+          $img_file = $knob_form['image'];
+          $extension = $img_file->extension();
+          //ファイル名作成
+          $img_name = uniqid(mt_rand()) . '.' . $extension;
+          //画像を編集して、保存
+          $img = Image::make($request->file('image'));
+          $img->orientate();
+          $img->resize(600, null,function ($constraint) {
+            $constraint->aspectRatio();
+            $constraint->upsize();}
+            )->save(storage_path(). '/app/public/image/'. $img_name);
+          $img_path = 'storage/image/'.$img_name;
+          $knob_form['image_path'] = basename($img_path);
+      }else{
           $knob_form['image_path'] = $knob->image_path;
       }
 

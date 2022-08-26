@@ -21,41 +21,42 @@
                         </ul>
                     @endif
                     <br>
-                    <div class="izakaya_image">
-                            <!--<input type="file" class="form-control-file" name="image">-->
+                    <div class="oya">
+                        <div class="izakaya_image">
                             <div class="form-text text-info">
                                 <img src="{{asset('storage/image/'.$izakaya_form->image_path)}}">
                             </div>
-                    </div>
-                    <div class="izakaya_explanation">
-                        <label class="col-md-20">店名</label>
-                        <div class="col-md-30">
-                            <a>　　{{ $izakaya_form->store }}</a>
                         </div>
-                        <br>
-                        <label class="col-md-20">用途</label>
-                        <div class="col-md-30">
-                            <a>　　{{ $izakaya_form->use }}</a>
-                        </div>
-                        <br>
-                        <label class="col-md-20">雰囲気</label>
-                        <div class="col-md-30">
-                            <a>　　{{ $izakaya_form->atmosphere }}</a>
-                        </div>
-                        <br>
-                        <label class="col-md-20">ジャンル</label>
-                        <div class="col-md-30">
-                            <a>　　{{ $izakaya_form->zyanru }}</a>
-                        </div>
-                        <br>
-                        <label class="col-md-20">おすすめの一品</label>
-                        <div class="col-md-30">
-                            <a>　　{{ $izakaya_form->recommendation }}</a>
-                        </div>
-                        <br>
-                        <label class="col-md-20">コメント</label>
-                        <div class="col-md-30">
-                            <a>　　{{ $izakaya_form->comment }}</a>
+                        <div class="izakaya_explanation">
+                            <label class="col-md-20">店名</label>
+                            <div class="col-md-30">
+                                <a>　{{ $izakaya_form->store }}</a>
+                            </div>
+                            <br>
+                            <label class="col-md-20">用途</label>
+                            <div class="col-md-30">
+                                <a>　{{ $izakaya_form->use }}</a>
+                            </div>
+                            <br>
+                            <label class="col-md-20">雰囲気</label>
+                            <div class="col-md-30">
+                                <a>　{{ $izakaya_form->atmosphere }}</a>
+                            </div>
+                            <br>
+                            <label class="col-md-20">ジャンル</label>
+                            <div class="col-md-30">
+                                <a>　{{ $izakaya_form->zyanru }}</a>
+                            </div>
+                            <br>
+                            <label class="col-md-20">おすすめの一品</label>
+                            <div class="col-md-30">
+                                <a>　{{ $izakaya_form->recommendation }}</a>
+                            </div>
+                            <br>
+                            <label class="col-md-20">コメント</label>
+                            <div class="col-md-30">
+                                <a>　{{ $izakaya_form->comment }}</a>
+                            </div>
                         </div>
                     </div>
                 </form>

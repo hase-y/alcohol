@@ -12,9 +12,9 @@ class Izakaya extends Model
         'use' => 'required',
         'atmosphere' => 'required',
         'zyanru' => 'required',
-        'store' => 'required',
-        'recommendation' => 'required',
-        'comment' => 'required',
+        'store' => 'required|max:30',
+        'recommendation' => 'required|max:30',
+        'comment' => 'required|max:255',
     );
     
     public function user() {

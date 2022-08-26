@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Izakaya;
 use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image; 
 
 class IzakayaController extends Controller
 {
@@ -21,13 +22,24 @@ class IzakayaController extends Controller
       $izakaya = new Izakaya;
       $form = $request->all();
       $id = Auth::id();
-
-      // フォームから画像が送信されてきたら、保存して、$news->image_path に画像のパスを保存する
+      
       if (isset($form['image'])) {
-        $path = $request->file('image')->store('public/image');
-        $izakaya->image_path = basename($path);
+        $img_file = $form['image'];
+        $extension = $img_file->extension();
+        //ファイル名作成
+        $img_name = uniqid(mt_rand()) . '.' . $extension;
+        //画像を編集して、保存
+        $img = Image::make($request->file('image'));
+        $img->orientate();
+        $img->resize(600, null,function ($constraint) {
+          $constraint->aspectRatio();
+          $constraint->upsize();}
+          )->save(storage_path(). '/app/public/image/'. $img_name);
+        $img_path = 'storage/image/'.$img_name;
+        $izakaya->image_path = basename($img_path);
       } else {
-          $izakaya->image_path = null;
+        $img_path = "storage/image/Noimage.jpg";
+        $izakaya->image_path = basename($img_path);
       }
 
       // フォームから送信されてきた_tokenを削除する
@@ -40,7 +52,7 @@ class IzakayaController extends Controller
       $izakaya->fill($form);
       $izakaya->save();
       
-      return redirect('admin/izakaya/create');
+      return redirect('admin/izakaya');
   }
   
    public function index(Request $request)
@@ -53,9 +65,9 @@ class IzakayaController extends Controller
                             ->orWhere('zyanru', 'like',  "%$search%")
                             ->orWhere('store', 'like',  "%$search%")
                             ->orWhere('recommendation', 'like',  "%$search%")
-                            ->orWhere('comment', 'like',  "%$search%")->get();
+                            ->orWhere('comment', 'like',  "%$search%")->paginate(12);
       } else {
-        $posts = Izakaya::all();
+        $posts = Izakaya::paginate(12);
       }
       return view('admin.izakaya.index', ['posts' => $posts, 'search' => $search, 'rogin_id' => $rogin_id ]);
   }
@@ -63,7 +75,7 @@ class IzakayaController extends Controller
   public function alone(Request $request)
   {
     $rogin_id = Auth::id();
-    $posts = Izakaya::where('use', '一人飲み')->get();
+    $posts = Izakaya::where('use', '一人飲み')->paginate(12);
 
     return view('admin.izakaya.alone', ['posts' => $posts, 'rogin_id' => $rogin_id ]);
   }
@@ -71,7 +83,7 @@ class IzakayaController extends Controller
   public function others(Request $request)
   {
     $rogin_id = Auth::id();
-    $posts = Izakaya::where('use', '一人飲みでない')->get();
+    $posts = Izakaya::where('use', '一人飲みでない')->paginate(12);
 
     return view('admin.izakaya.others', ['posts' => $posts, 'rogin_id' => $rogin_id ]);
   }

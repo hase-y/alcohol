@@ -21,89 +21,36 @@
                         </ul>
                     @endif
                     <br>
-                    <div class="liquor_image">
-                            <!--<input type="file" class="form-control-file" name="image">-->
-                            <div class="form-text text-info">
-                                <img src="{{asset('storage/image/'.$liquor_form->image_path)}}">
+                    <div class="oya">
+                        <div class="liquor_image">
+                                <!--<input type="file" class="form-control-file" name="image">-->
+                                <div class="form-text text-info">
+                                    <img src="{{asset('storage/image/'.$liquor_form->image_path)}}">
+                                </div>
+                        </div>
+                        <br>
+                        <div class="liquor_explanation">
+                            <label class="col-md-20">ジャンル</label>
+                            <div class="col-md-30">
+                                <a>　{{ $liquor_form->zyanru }}</a>
                             </div>
-                    </div>
-                    <br>
-                    
-                    <div class="liquor_explanation">
-                        <label class="col-md-20">ジャンル</label>
-                        <div class="col-md-30">
-                            <a>　　{{ $liquor_form->zyanru }}</a>
-                        </div>
-                        <br>
-                        <label class="col-md-20">お酒の名前</label>
-                        <div class="col-md-30">
-                            <a>　　{{ $liquor_form->name }}</a>
-                        </div>
-                        <br>
-                        <label class="col-md-20">コメント</label>
-                        <div class="col-md-30">
-                            <a>　　{{ $liquor_form->comment }}</a>
-                        </div>
-                        <br>
-                        <label class="col-md-20">価格</label>
-                        <div class="col-md-30">
-                            <a>　　{{ $liquor_form->value }}　円</a>
+                            <br>
+                            <label class="col-md-20">お酒の名前</label>
+                            <div class="col-md-30">
+                                <a>　{{ $liquor_form->name }}</a>
+                            </div>
+                            <br>
+                            <label class="col-md-20">コメント</label>
+                            <div class="col-md-30">
+                                <a>　{{ $liquor_form->comment }}</a>
+                            </div>
+                            <br>
+                            <label class="col-md-20">価格</label>
+                            <div class="col-md-30">
+                                <a>　{{ $liquor_form->value }}　円</a>
+                            </div>
                         </div>
                     </div>
-                    <!--<div class="form-group row">-->
-                    <!--    <label class="col-md-2">ジャンル選択</label>-->
-                    <!--    <div class="col-md-10">-->
-                    <!--        <select name="zyanru">-->
-                    <!--            <option value="ビール">ビール</option>-->
-                    <!--            <option value="ワイン">ワイン</option>-->
-                    <!--            <option value="ウイスキー">ウイスキー</option>-->
-                    <!--            <option value="焼酎">焼酎</option>-->
-                    <!--            <option value="日本酒">日本酒</option>-->
-                    <!--            <option value="サワー">サワー</option>-->
-                    <!--            <option value="ハイボール">ハイボール</option>-->
-                    <!--            <option value="その他">その他</option>-->
-                    <!--        </select>-->
-                    <!--    </div>-->
-                    <!--</div>-->
-                    <!--<div class="form-group row">-->
-                    <!--    <label class="col-md-2">お酒の名前</label>-->
-                    <!--    <div class="col-md-10">-->
-                    <!--        <input type="text" class="form-control" name="name" value="{{ $liquor_form->name }}">-->
-                    <!--    </div>-->
-                    <!--</div>-->
-                    <!--<div class="form-group row">-->
-                    <!--    <label class="col-md-2">コメント</label>-->
-                    <!--    <div class="col-md-10">-->
-                    <!--        <input type="text" class="form-control" name="comment" value="{{ $liquor_form->comment }}">-->
-                    <!--    </div>-->
-                    <!--</div>-->
-                    <!--<div class="form-group row">-->
-                    <!--    <label class="col-md-2">価格</label>-->
-                    <!--    <div class="col-md-10">-->
-                    <!--        <input type="text" class="form-control" name="value" value="{{ $liquor_form->value }}">-->
-                    <!--    </div>-->
-                    <!--</div>-->
-                    <!--<div class="form-group row">-->
-                    <!--    <label class="col-md-2">画像</label>-->
-                    <!--    <div class="col-md-10">-->
-                    <!--        <input type="file" class="form-control-file" name="image">-->
-                    <!--        <div class="form-text text-info">-->
-                    <!--            設定中: {{ $liquor_form->image_path }}-->
-                    <!--        </div>-->
-                    <!--        <div class="form-check">-->
-                    <!--            <label class="form-check-label">-->
-                    <!--                <input type="checkbox" class="form-check-input" name="remove" value="true">画像を削除-->
-                    <!--            </label>-->
-                    <!--        </div>-->
-                    <!--    </div>-->
-                    <!--</div>-->
-                    <!--<div class="form-group row">-->
-                    <!--    <div class="col-md-10">-->
-                    <!--        <input type="hidden" name="id" value="{{ $liquor_form->id }}">-->
-                    <!--        @csrf-->
-                    <!--        <input type="submit" class="btn btn-primary" value="更新">-->
-                    <!--    </div>-->
-                    <!--</div>-->
                 </form>
              </div>
         </div>

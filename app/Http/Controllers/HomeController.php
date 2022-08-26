@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Liquor;
 use App\Izakaya;
+use App\Knob;
 
 
 class HomeController extends Controller
@@ -17,7 +18,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -27,18 +28,11 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        // $posts_liquor = Liquor::all();
-        // $posts_izakaya = Izakaya::all();
         
-        // $posts_mix = [];
-        //     foreach (array_map(null, $posts_liquor, $posts_izakaya) as [$liquor, $izakaya]) {
-        //     array_push($posts_mix, $liquor, $izakaya);
-        // }
-        // return view('home', ['posts_mix' => $posts_mix]);
-         $posts_liquor = Liquor::all();
-         $posts_izakaya = Izakaya::all(); 
-         $posts_mix = $posts_liquor->zip($posts_izakaya);
-        //  print_r($posts_mix->all());
-        return view('home', ['posts_mix' => $posts_mix]);
+        $posts_liquor = Liquor::inRandomOrder()->take(12)->get();
+        $posts_izakaya = Izakaya::inRandomOrder()->take(12)->get();
+        $posts_knob = Knob::inRandomOrder()->take(12)->get();
+        
+        return view('home', ['posts_liquor' => $posts_liquor,'posts_izakaya' => $posts_izakaya, 'posts_knob' => $posts_knob]);
     }
 }

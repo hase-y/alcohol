@@ -46,7 +46,7 @@ class LiquorController extends Controller
         $liquor->image_path = Storage::disk('s3')->url($img_path);
       } else {
         // $liquor->image_path = "/storage/image/Noimage.jpg";
-        $liquor->image_path = "s3://alcohollover/Noimage.jpg";
+        $liquor->image_path = "https://alcohollover.s3.ap-northeast-1.amazonaws.com/Noimage.jpg";
       }
 
       // フォームから送信されてきた_tokenを削除する

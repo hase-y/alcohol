@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use App\Knob;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image; 
+use Storage;
 
 class KnobController extends Controller
 {
@@ -29,17 +31,18 @@ class KnobController extends Controller
         //ファイル名作成
         $img_name = uniqid(mt_rand()) . '.' . $extension;
         //画像を編集して、保存
+        $local_img_path = storage_path(). '/app/public/image/'. $img_name;
         $img = Image::make($request->file('image'));
         $img->orientate();
         $img->resize(600, null,function ($constraint) {
           $constraint->aspectRatio();
-          $constraint->upsize();}
-          )->save(storage_path(). '/app/public/image/'. $img_name);
-        $img_path = 'storage/image/'.$img_name;
-        $knob->image_path = basename($img_path);
+          $constraint->upsize();
+        }
+          )->save($local_img_path);
+        $img_path = Storage::disk('s3')->putFile('/', new File($local_img_path),'public');
+        $knob->image_path = Storage::disk('s3')->url($img_path);
       } else {
-        $img_path = "storage/image/Noimage.jpg";
-        $knob->image_path = basename($img_path);
+        $knob->image_path = "/storage/image/Noimage.jpg";
       }
 
       // フォームから送信されてきた_tokenを削除する
@@ -113,22 +116,23 @@ class KnobController extends Controller
       $knob_form = $request->all();
       
       if($request->remove == 'true'){
-          $img_path = "storage/image/Noimage.jpg";
-          $knob_form['image_path'] = basename($img_path);
+          $knob_form['image_path'] = "/storage/image/Noimage.jpg";
       }elseif($request->file('image')){
           $img_file = $knob_form['image'];
           $extension = $img_file->extension();
           //ファイル名作成
           $img_name = uniqid(mt_rand()) . '.' . $extension;
           //画像を編集して、保存
+          $local_img_path = storage_path(). '/app/public/image/'. $img_name;
           $img = Image::make($request->file('image'));
           $img->orientate();
           $img->resize(600, null,function ($constraint) {
             $constraint->aspectRatio();
-            $constraint->upsize();}
-            )->save(storage_path(). '/app/public/image/'. $img_name);
-          $img_path = 'storage/image/'.$img_name;
-          $knob_form['image_path'] = basename($img_path);
+            $constraint->upsize();
+          }
+            )->save($local_img_path);
+          $img_path = Storage::disk('s3')->putFile('/', new File($local_img_path),'public');
+          $knob_form['image_path'] = Storage::disk('s3')->url($img_path);
       }else{
           $knob_form['image_path'] = $knob->image_path;
       }

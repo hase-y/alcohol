@@ -8,7 +8,6 @@ use App\Liquor;
 use App\Izakaya;
 use App\Knob;
 
-
 class HomeController extends Controller
 {
     /**

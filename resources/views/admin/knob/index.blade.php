@@ -33,7 +33,7 @@
                 <div class="item">
                 <ul>
                     <a class = "detail" href = "{{ action('Admin\KnobController@detail', ['id' => $knob->id]) }}">
-                    <li><img src="{{asset('storage/image/'.$knob->image_path)}}"></li>
+                    <li><img src="{{ $knob->image_path }}"></li>
                     <li class="index_name">{{ $knob->product }}</li>
                     <li>{{ $knob->comment }}</li>
                     </a>

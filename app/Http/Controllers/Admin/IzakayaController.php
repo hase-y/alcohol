@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use App\Izakaya;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image; 
+use Storage;
 
 class IzakayaController extends Controller
 {
@@ -29,17 +31,18 @@ class IzakayaController extends Controller
         //ファイル名作成
         $img_name = uniqid(mt_rand()) . '.' . $extension;
         //画像を編集して、保存
+        $local_img_path = storage_path(). '/app/public/image/'. $img_name;
         $img = Image::make($request->file('image'));
         $img->orientate();
         $img->resize(600, null,function ($constraint) {
           $constraint->aspectRatio();
-          $constraint->upsize();}
-          )->save(storage_path(). '/app/public/image/'. $img_name);
-        $img_path = 'storage/image/'.$img_name;
-        $izakaya->image_path = basename($img_path);
+          $constraint->upsize();
+        }
+          )->save($local_img_path);
+        $img_path = Storage::disk('s3')->putFile('/', new File($local_img_path),'public');
+        $izakaya->image_path = Storage::disk('s3')->url($img_path);
       } else {
-        $img_path = "storage/image/Noimage.jpg";
-        $izakaya->image_path = basename($img_path);
+        $izakaya->image_path = "/storage/image/Noimage.jpg";
       }
 
       // フォームから送信されてきた_tokenを削除する
@@ -110,14 +113,26 @@ class IzakayaController extends Controller
   public function update(Request $request)
   {
       $this->validate($request, Izakaya::$rules);
-      $izakaya = Izakaya::find($izakaya->id);
+      $izakaya = Izakaya::find($request->id);
       $izakaya_form = $request->all();
       
       if ($request->remove == 'true') {
-          $izakaya_form['image_path'] = null;
+          $izakaya_form['image_path'] = "/storage/image/Noimage.jpg";
       } elseif ($request->file('image')) {
-          $path = $request->file('image')->store('public/image');
-          $izakaya_form['image_path'] = basename($path);
+          $img_file = $izakaya_form['image'];
+          $extension = $img_file->extension();
+          //ファイル名作成
+          $img_name = uniqid(mt_rand()) . '.' . $extension;
+          //画像を編集して、保存
+          $local_img_path = storage_path(). '/app/public/image/'. $img_name;
+          $img = Image::make($request->file('image'));
+          $img->orientate();
+          $img->resize(600, null,function ($constraint) {
+            $constraint->aspectRatio();
+            $constraint->upsize();}
+            )->save($local_img_path);
+          $img_path = Storage::disk('s3')->putFile('/', new File($local_img_path),'public');
+          $izakaya_form['image_path'] = Storage::disk('s3')->url($img_path);
       } else {
           $izakaya_form['image_path'] = $izakaya->image_path;
       }

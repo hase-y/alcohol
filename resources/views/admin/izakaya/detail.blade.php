@@ -24,7 +24,7 @@
                     <div class="oya">
                         <div class="izakaya_image">
                             <div class="form-text text-info">
-                                <img src="{{asset('storage/image/'.$izakaya_form->image_path)}}">
+                                <img src="{{ $izakaya_form->image_path }}">
                             </div>
                         </div>
                         <div class="izakaya_explanation">

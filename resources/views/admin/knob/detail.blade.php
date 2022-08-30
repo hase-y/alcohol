@@ -25,7 +25,7 @@
                         <div class="knob_image">
                                 <!--<input type="file" class="form-control-file" name="image">-->
                                 <div class="form-text text-info">
-                                    <img src="{{asset('storage/image/'.$knob_form->image_path)}}">
+                                    <img src="{{ $knob_form->image_path }}">
                                 </div>
                         </div>
                         <div class="knob_explanation">

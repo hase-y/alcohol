@@ -25,7 +25,8 @@
                         <div class="liquor_image">
                                 <!--<input type="file" class="form-control-file" name="image">-->
                                 <div class="form-text text-info">
-                                    <img src="{{asset('storage/image/'.$liquor_form->image_path)}}">
+                                    <!--<img src="{{asset('storage/image/'.$liquor_form->image_path)}}">-->
+                                    <img src="{{asset($liquor_form->image_path)}}">
                                 </div>
                         </div>
                         <br>

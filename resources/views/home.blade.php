@@ -54,7 +54,7 @@
                 <div class="item">
                     <ul>
                         <a class = "detail" href = "{{ action('LiquorController@detail', ['id' => $liquor->id]) }}">
-                            <li><img src="{{asset('storage/image/'.$liquor->image_path)}}"></li>
+                            <li><img src="{{ $liquor->image_path }}"></li>
                             <li class="index_name">{{ $liquor->name }}</li>
                         </a>
                     </ul>
@@ -67,7 +67,7 @@
                 <div class="item">
                     <ul>
                         <a class = "detail" href = "{{ action('IzakayaController@detail', ['id' => $izakaya->id]) }}">
-                            <li><img src="{{asset('storage/image/'.$izakaya->image_path)}}"></li>
+                            <li><img src="{{ $izakaya->image_path }}"></li>
                             <li class="index_name">{{ $izakaya->store }}</li>
                         </a>
                     </ul>
@@ -80,7 +80,7 @@
                 <div class="item">
                     <ul>
                         <a class = "detail" href = "{{ action('KnobController@detail', ['id' => $knob->id]) }}">
-                            <li><img src="{{asset('storage/image/'.$knob->image_path)}}"></li>
+                            <li><img src="{{ $knob->image_path }}"></li>
                             <li class="index_name">{{ $knob->product }}</li>
                         </a>
                     </ul>

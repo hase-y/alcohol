@@ -31,7 +31,7 @@ class KnobController extends Controller
         //ファイル名作成
         $img_name = uniqid(mt_rand()) . '.' . $extension;
         //画像を編集して、保存
-        $local_img_path = storage_path(). '/app/public/image/'. $img_name;
+        $local_img_path = config("filesystems.disks.local.tmp_dir"). '/app/public/image/'. $img_name;
         $img = Image::make($request->file('image'));
         $img->orientate();
         $img->resize(600, null,function ($constraint) {
@@ -123,7 +123,7 @@ class KnobController extends Controller
           //ファイル名作成
           $img_name = uniqid(mt_rand()) . '.' . $extension;
           //画像を編集して、保存
-          $local_img_path = storage_path(). '/app/public/image/'. $img_name;
+          $local_img_path = config("filesystems.disks.local.tmp_dir"). '/app/public/image/'. $img_name;
           $img = Image::make($request->file('image'));
           $img->orientate();
           $img->resize(600, null,function ($constraint) {

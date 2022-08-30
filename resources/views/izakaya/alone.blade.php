@@ -21,7 +21,7 @@
                 <div class="item">
                     <ul>
                         <a class = "detail" href = "{{ action('IzakayaController@detail', ['id' => $alone->id]) }}">
-                        <li><img src="{{asset('storage/image/'.$alone->image_path)}}"></li>
+                        <li><img src="{{ $alone->image_path }}"></li>
                         <li class="index_name">{{ $alone->store }}</li>
                         <li>{{ $alone->atmosphere }}</li>
                         </a>

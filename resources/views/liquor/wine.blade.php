@@ -27,7 +27,7 @@
                 <div class="item">
                     <ul>
                         <a class = "detail" href = "{{ action('LiquorController@detail', ['id' => $wine->id]) }}">
-                        <li><img src="{{asset('storage/image/'.$wine->image_path)}}"></li>
+                        <li><img src="{{ $wine->image_path }}"></li>
                         <li class="index_name">{{ $wine->name }}</li>
                         <li>{{ $wine->comment }}</li>
                         </a>

@@ -21,7 +21,7 @@
                 <div class="item">
                     <ul>
                         <a class = "detail" href = "{{ action('KnobController@detail', ['id' => $shihan->id]) }}">
-                        <li><img src="{{asset('storage/image/'.$shihan->image_path)}}"></li>
+                        <li><img src="{{ $shihan->image_path }}"></li>
                         <li class="index_name">{{ $shihan->product }}</li>
                         <li>{{ $shihan->comment }}</li>
                         </a>

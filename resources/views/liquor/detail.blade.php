@@ -24,7 +24,7 @@
                     <div class="oya">
                         <div class="liquor_image">
                                 <div class="form-text text-info">
-                                    <img src="{{asset('storage/image/'.$liquor_form->image_path)}}">
+                                    <img src="{{ $liquor_form->image_path }}">
                                 </div>
                         </div>
                         <br>

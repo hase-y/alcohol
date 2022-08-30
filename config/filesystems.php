@@ -46,7 +46,7 @@ return [
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),
-            'tmp_dir' => env('TMP_DIR', storage_path()),
+            'tmp_dir' => env('TMP_DIR', storage_path('app/public/image')),
         ],
 
         'public' => [

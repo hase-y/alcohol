@@ -42,7 +42,7 @@ class KnobController extends Controller
         $img_path = Storage::disk('s3')->putFile('/', new File($local_img_path),'public');
         $knob->image_path = Storage::disk('s3')->url($img_path);
       } else {
-        $knob->image_path = "/storage/image/Noimage.jpg";
+        $knob->image_path = "https://alcohollover.s3.ap-northeast-1.amazonaws.com/NDYeffScu8bjMhkm5z5kYmx9Zc3ddsouxP9GGW87.jpg";
       }
 
       // フォームから送信されてきた_tokenを削除する
@@ -116,7 +116,7 @@ class KnobController extends Controller
       $knob_form = $request->all();
       
       if($request->remove == 'true'){
-          $knob_form['image_path'] = "/storage/image/Noimage.jpg";
+          $knob_form['image_path'] = "https://alcohollover.s3.ap-northeast-1.amazonaws.com/NDYeffScu8bjMhkm5z5kYmx9Zc3ddsouxP9GGW87.jpg";
       }elseif($request->file('image')){
           $img_file = $knob_form['image'];
           $extension = $img_file->extension();

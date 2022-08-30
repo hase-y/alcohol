@@ -42,7 +42,7 @@ class IzakayaController extends Controller
         $img_path = Storage::disk('s3')->putFile('/', new File($local_img_path),'public');
         $izakaya->image_path = Storage::disk('s3')->url($img_path);
       } else {
-        $izakaya->image_path = "/storage/image/Noimage.jpg";
+        $izakaya->image_path = "https://alcohollover.s3.ap-northeast-1.amazonaws.com/NDYeffScu8bjMhkm5z5kYmx9Zc3ddsouxP9GGW87.jpg";
       }
 
       // フォームから送信されてきた_tokenを削除する
@@ -117,7 +117,7 @@ class IzakayaController extends Controller
       $izakaya_form = $request->all();
       
       if ($request->remove == 'true') {
-          $izakaya_form['image_path'] = "/storage/image/Noimage.jpg";
+          $izakaya_form['image_path'] = "https://alcohollover.s3.ap-northeast-1.amazonaws.com/NDYeffScu8bjMhkm5z5kYmx9Zc3ddsouxP9GGW87.jpg";
       } elseif ($request->file('image')) {
           $img_file = $izakaya_form['image'];
           $extension = $img_file->extension();

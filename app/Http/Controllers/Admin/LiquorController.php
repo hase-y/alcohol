@@ -46,7 +46,7 @@ class LiquorController extends Controller
         $liquor->image_path = Storage::disk('s3')->url($img_path);
       } else {
         // $liquor->image_path = "/storage/image/Noimage.jpg";
-        $liquor->image_path = "https://alcohollover.s3.ap-northeast-1.amazonaws.com/Noimage.jpg";
+        $liquor->image_path = "https://alcohollover.s3.ap-northeast-1.amazonaws.com/NDYeffScu8bjMhkm5z5kYmx9Zc3ddsouxP9GGW87.jpg";
       }
 
       // フォームから送信されてきた_tokenを削除する
@@ -173,7 +173,7 @@ class LiquorController extends Controller
       if ($request->remove == 'true') {
           // $img_path = "storage/image/Noimage.jpg";
           // $liquor_form['image_path'] = basename($img_path);
-          $liquor_form['image_path'] = "/storage/image/Noimage.jpg";
+          $liquor_form['image_path'] = "https://alcohollover.s3.ap-northeast-1.amazonaws.com/NDYeffScu8bjMhkm5z5kYmx9Zc3ddsouxP9GGW87.jpg";
       } elseif ($request->file('image')) {
           $img_file = $liquor_form['image'];
           $extension = $img_file->extension();

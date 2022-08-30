@@ -29,8 +29,8 @@
         {{-- この章の後半で作成するCSSを読み込みます --}}
         <link href="{{ asset('css/front.css') }}" rel="stylesheet">
         
-        <link rel="stylesheet" type="text/css" href="https://www.jungleocean.com/demo/jquery-slick/css/slick-theme.css"/>
-        <link rel="stylesheet" type="text/css" href="https://www.jungleocean.com/demo/jquery-slick/css/slick.css"/>
+        <link href="{{ secure_asset('css/slick-theme.css') }}" rel="stylesheet">
+        <link href="{{ secure_asset('css/slick.css') }}" rel="stylesheet">
     </head>
     <body>
         

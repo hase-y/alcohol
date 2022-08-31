@@ -64,9 +64,9 @@
                         <div class="adminpage">
                             <ul class="navbar-nav mc-auto">
                                 <li>会員用</li>
-                                <li><a class="adminliquor" href="admin/liquor">お酒ページ</a></li>
-                                <li><a class="izakaya" href="admin/izakaya">居酒屋ページ</a></li>
-                                <li><a class="adminknob" href="admin/knob">おつまみページ</a></li>
+                                <li><a class="adminliquor" href="{{ route('admin.liquor')}}">お酒ページ</a></li>
+                                <li><a class="izakaya" href="{{ route('admin.izakaya')}}">居酒屋ページ</a></li>
+                                <li><a class="adminknob" href="{{ route('admin.knob')}}">おつまみページ</a></li>
                             </ul>
                         </div>
                         @endguest

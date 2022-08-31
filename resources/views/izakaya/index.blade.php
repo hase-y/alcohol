@@ -31,7 +31,7 @@
                 <div class="item">
                     <ul>
                         <a class = "detail" href = "{{ action('IzakayaController@detail', ['id' => $izakaya->id]) }}">
-                            <li><img src="{{ $izakaya->image_path)}}"></li>
+                            <li><img src="{{ $izakaya->image_path}}"></li>
                             <li class="index_name">{{ $izakaya->store }}</li>
                             <li>{{ $izakaya->comment }}</li>
                         </a>

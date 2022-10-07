@@ -23,7 +23,7 @@
             </div>
             <div class="col-md-8"></div>
             <div class="search col-md-4">
-                <form action="{{ action('Admin\LiquorController@index') }}" method="get">
+                <form action="{{ action('LiquorController@index') }}" method="get">
                 <input type="text" class="search" name="search" value="{{ $search }}">
                  @csrf
                 <input type="submit" class="search btn btn-outline-dark" value="検索">

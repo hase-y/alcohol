@@ -49,6 +49,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::get('izakaya/alone', 'Admin\IzakayaController@alone');
     Route::get('izakaya/others', 'Admin\IzakayaController@others');
     Route::get('izakaya/detail', 'Admin\IzakayaController@detail');
+    // いいねボタン
+    Route::get('liquor/detail/nice/{liquor}', 'Admin\NiceController@nice')->name('nice');
+    Route::get('liquor/detail/unnice/{liquor}', 'Admin\NiceController@unnice')->name('unnice');
 });
 Auth::routes();
 
@@ -71,3 +74,7 @@ Route::get('knob', 'KnobController@index')->name('knob');
 Route::get('knob/shihan', 'KnobController@shihan');
 Route::get('knob/tezukuri', 'KnobController@tezukuri');
 Route::get('knob/detail', 'KnobController@detail');
+// いいねボタン
+// Route::get('/liquor/nice/{liquor}', 'NiceController@nice')->name('nice');
+// Route::get('/liquor/unnice/{liquor}', 'NiceController@unnice')->name('unnice');
+

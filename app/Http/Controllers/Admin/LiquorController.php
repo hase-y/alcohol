@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use App\Liquor;
+use App\Nice;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image; 
 use Storage;
@@ -16,7 +17,7 @@ class LiquorController extends Controller
   {
       return view('admin.liquor.create');
   }
-  
+ 
   public function create(Request $request)
   {
       $this->validate($request, Liquor::$rules);
@@ -154,15 +155,23 @@ class LiquorController extends Controller
       return view('admin.liquor.edit', ['liquor_form' => $liquor]);
   }
   
-    public function detail(Request $request)
-  {
+  public function detail(Liquor $liquor, Request $request)
+  {   
       $liquor = Liquor::find($request->id);
+      $nice=Nice::where('liquor_id', $liquor->id)->where('user_id', auth()->user()->id)->exists();
+      
       if (empty($liquor)) {
         abort(404);    
       }
-      return view('admin.liquor.detail', ['liquor_form' => $liquor]);
+
+      return view('admin.liquor.detail', ['liquor_form' => $liquor, 'nice' => $nice], compact('liquor', 'nice'));
   }
   
+  public function show(Liquor $liquor)
+  {  
+      $nice=Nice::where('liquor_id', $liquor->id)->where('user_id', auth()->user()->id)->first();
+      return view('admin.liquor.detail', compact('liquor', 'nice'));
+  }
   
   public function update(Request $request)
   {

@@ -20,7 +20,6 @@
                             @endforeach
                         </ul>
                     @endif
-                    <br>
                     <div class="oya">
                         <div class="liquor_image">
                                 <!--<input type="file" class="form-control-file" name="image">-->
@@ -52,6 +51,29 @@
                             </div>
                         </div>
                     </div>
+                    <br>
+                    <span>
+                        <!-- もし$niceがあれば＝ユーザーが「いいね」をしていたら -->
+                        @if($nice)
+                        <!-- 「いいね」取消用ボタンを表示 -->
+                        <a href="{{ route('unnice', $liquor) }}" class="btn btn-success btn-sm">
+                        	いいね
+                        	<!-- 「いいね」の数を表示 -->
+                        	<span class="badge">
+                        		{{ $liquor->nices->count() }}
+                        	</span>
+                        </a>
+                        @else
+                        <!-- まだユーザーが「いいね」をしていなければ、「いいね」ボタンを表示 -->
+                        <a href="{{ route('nice', $liquor) }}" class="btn btn-secondary btn-sm">
+                        	いいね
+                        	 <!--「いいね」の数を表示 -->
+                        	<span class="badge">
+                        	    {{ $liquor->nices->count() }}
+                        	</span>
+                        </a>
+                        @endif
+                    </span>
                 </form>
              </div>
         </div>

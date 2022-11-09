@@ -48,4 +48,12 @@ class User extends Authenticatable
     public function knobs() {
         return $this->hasMany('App\Models\Knob');
     }
+    
+    // public function liquors() {
+    //     return $this->hasMany('App\Models\Liquor');
+    // }
+ 
+    public function nices() {
+        return $this->hasMany('App\Models\Nice');
+    }
 }

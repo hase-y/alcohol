@@ -90,3 +90,8 @@ $(document).ready(function(){
             }]
           });
         });
+        
+        
+        <span class="badge">
+                        	    {{ $liquor->nices->count() }}
+                        	</span>

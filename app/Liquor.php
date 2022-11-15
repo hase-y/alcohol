@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-//use Illuminate\Support\Facades\Auth;
 
 class Liquor extends Model
 {
@@ -19,10 +18,6 @@ class Liquor extends Model
     public function user() {
         return $this->belongsTo('App\Models\User');
     }
-    
-    // public function user() {
-    //     return $this->belongsTo('App\Models\User');
-    // }
  
     public function nices() {
         return $this->hasMany('App\Nice');

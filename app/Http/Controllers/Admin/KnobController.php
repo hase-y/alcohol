@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use App\Knob;
+use App\Nice_knob;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image; 
 use Storage;
@@ -98,13 +99,14 @@ class KnobController extends Controller
       return view('admin.knob.edit', ['knob_form' => $knob]);
   }
   
-    public function detail(Request $request)
+    public function detail(Knob $knob, Request $request)
   {
       $knob = Knob::find($request->id);
+      $nice_knob=Nice_knob::where('knob_id', $knob->id)->where('user_id', auth()->user()->id)->exists();
       if (empty($knob)) {
         abort(404);    
       }
-      return view('admin.knob.detail', ['knob_form' => $knob]);
+      return view('admin.knob.detail', ['knob_form' => $knob, 'nice_knob' => $nice_knob], compact('knob', 'nice_knob'));
   }
   
   

@@ -20,4 +20,8 @@ class Izakaya extends Model
     public function user() {
         return $this->belongsTo('App\Models\User');
     }
+    
+    public function nice_izakayas() {
+        return $this->hasMany('App\Nice_izakaya');
+    }
 }

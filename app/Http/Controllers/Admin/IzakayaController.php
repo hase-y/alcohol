@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use App\Izakaya;
+use App\Nice_izakaya;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image; 
 use Storage;
@@ -100,13 +101,14 @@ class IzakayaController extends Controller
       return view('admin.izakaya.edit', ['izakaya_form' => $izakaya]);
   }
   
-    public function detail(Request $request)
+    public function detail(Izakaya $izakaya, Request $request)
   {
       $izakaya = Izakaya::find($request->id);
+      $nice_izakaya=Nice_izakaya::where('izakaya_id', $izakaya->id)->where('user_id', auth()->user()->id)->exists();
       if (empty($izakaya)) {
         abort(404);    
       }
-      return view('admin.izakaya.detail', ['izakaya_form' => $izakaya]);
+      return view('admin.izakaya.detail', ['izakaya_form' => $izakaya, 'nice_izakaya' => $nice_izakaya], compact('izakaya', 'nice_izakaya'));
   }
   
   

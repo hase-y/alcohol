@@ -59,6 +59,28 @@
                             </div>
                         </div>
                     </div>
+                    <span>
+                        <!-- もし$niceがあれば＝ユーザーが「いいね」をしていたら -->
+                        @if($nice_izakaya)
+                        <!-- 「いいね」取消用ボタンを表示 -->
+                        <a href="{{ route('unnice_izakaya', $izakaya) }}" class="btn btn-success btn-sm">
+                        	いいね
+                        	<!-- 「いいね」の数を表示 -->
+                        	<span class="badge">
+                        		{{ $izakaya->nice_izakayas->count() }}
+                        	</span>
+                        </a>
+                        @else
+                        <!-- まだユーザーが「いいね」をしていなければ、「いいね」ボタンを表示 -->
+                        <a href="{{ route('nice_izakaya', $izakaya) }}" class="btn btn-secondary btn-sm">
+                        	いいね
+                        	 <!--「いいね」の数を表示 -->
+                        	<span class="badge">
+                        	    {{ $izakaya->nice_izakayas->count() }}
+                        	</span>
+                        </a>
+                        @endif
+                    </span>
                 </form>
              </div>
         </div>

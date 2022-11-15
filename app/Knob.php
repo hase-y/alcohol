@@ -19,4 +19,8 @@ class Knob extends Model
     public function user() {
         return $this->belongsTo('App\Models\User');
     }
+    
+    public function nice_knobs() {
+        return $this->hasMany('App\Nice_knob');
+    }
 }

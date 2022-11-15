@@ -45,15 +45,6 @@
                             </div>
                         </div>
                     </div>
-                    <span>
-                    <button type="button">
-                        	いいね
-                        	<!-- 「いいね」の数を表示 -->
-                        	<span class="badge">
-                        		{{ $liquor->nices->count() }}
-                        	</span>
-                    </a>
-                    </span>
                 </form>
              </div>
         </div>

@@ -159,19 +159,13 @@ class LiquorController extends Controller
   {   
       $ip = $request->ip();
       $liquor = Liquor::find($request->id);
-      $nice=Nice::where('liquor_id', $liquor->id)->where('ip', $ip)->exists();
+      $nice=Nice::where('liquor_id', $liquor->id)->where('ip', $ip)->first();
       
       if (empty($liquor)) {
         abort(404);    
       }
 
       return view('admin.liquor.detail', ['liquor_form' => $liquor, 'nice' => $nice], compact('liquor', 'nice'));
-  }
-  
-  public function show(Liquor $liquor)
-  {  
-      $nice=Nice::where('liquor_id', $liquor->id)->where('user_id', auth()->user()->id)->first();
-      return view('admin.liquor.detail', compact('liquor', 'nice'));
   }
   
   public function update(Request $request)

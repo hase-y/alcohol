@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Knob;
+use App\Nice_knob;
+
 
 class KnobController extends Controller
 {
@@ -36,12 +38,15 @@ class KnobController extends Controller
       return view('knob.tezukuri', ['posts' => $posts ]);
   }
   
-  public function detail(Request $request)
+   public function detail(Knob $knob, Request $request)
   {
+      $ip = $request->ip();
       $knob = Knob::find($request->id);
+      $nice_knob=Nice_knob::where('knob_id', $knob->id)->where('ip', $ip)->exists();
+      
       if (empty($knob)) {
         abort(404);    
       }
-      return view('knob.detail', ['knob_form' => $knob]);
+      return view('knob.detail', ['knob_form' => $knob, 'nice_knob' => $nice_knob], compact('knob', 'nice_knob'));
   }
 }

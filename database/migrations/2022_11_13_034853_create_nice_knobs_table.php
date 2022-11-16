@@ -17,6 +17,7 @@ class CreateNiceKnobsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('knob_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
+            $table->string('ip')->nullable();
             $table->timestamps();
         });
     }

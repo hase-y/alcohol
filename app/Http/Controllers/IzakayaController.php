@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Izakaya;
+use App\Nice_izakaya;
 
 class IzakayaController extends Controller
 {
@@ -37,13 +38,16 @@ class IzakayaController extends Controller
       return view('izakaya.others', ['posts' => $posts ]);
   }
   
-      public function detail(Request $request)
+  public function detail(Izakaya $izakaya, Request $request)
   {
+      $ip = $request->ip();
       $izakaya = Izakaya::find($request->id);
+      $nice_izakaya=Nice_izakaya::where('izakaya_id', $izakaya->id)->where('ip', $ip)->exists();
+      
       if (empty($izakaya)) {
         abort(404);    
       }
-      return view('izakaya.detail', ['izakaya_form' => $izakaya]);
+      return view('izakaya.detail', ['izakaya_form' => $izakaya, 'nice_izakaya' => $nice_izakaya], compact('izakaya', 'nice_izakaya'));
   }
   
 }

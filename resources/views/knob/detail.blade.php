@@ -54,6 +54,28 @@
                             </div>
                         </div>
                     </div>
+                    <span>
+                        <!-- もし$niceがあれば＝ユーザーが「いいね」をしていたら -->
+                        @if($nice_knob)
+                        <!-- 「いいね」取消用ボタンを表示 -->
+                        <a href="{{ route('unnice_knob', $knob) }}" class="btn btn-success btn-sm">
+                        	いいね
+                        	<!-- 「いいね」の数を表示 -->
+                        	<span class="badge">
+                        		{{ $knob->nice_knobs->count() }}
+                        	</span>
+                        </a>
+                        @else
+                        <!-- まだユーザーが「いいね」をしていなければ、「いいね」ボタンを表示 -->
+                        <a href="{{ route('nice_knob', $knob) }}" class="btn btn-secondary btn-sm">
+                        	いいね
+                        	 <!--「いいね」の数を表示 -->
+                        	<span class="badge">
+                        	    {{ $knob->nice_knobs->count() }}
+                        	</span>
+                        </a>
+                        @endif
+                    </span>
                 </form>
              </div>
         </div>

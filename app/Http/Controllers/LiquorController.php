@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Liquor;
+use App\Nice;
 
 class LiquorController extends Controller
 {
@@ -77,14 +78,17 @@ class LiquorController extends Controller
       return view('liquor.others', ['posts' => $posts ]);
   }
   
-    public function detail(Request $request)
-  {
+  public function detail(Liquor $liquor, Request $request)
+  {   
+      $ip = $request->ip();
       $liquor = Liquor::find($request->id);
+      $nice=Nice::where('liquor_id', $liquor->id)->where('ip', $ip)->exists();
       
       if (empty($liquor)) {
         abort(404);    
       }
-      return view('liquor.detail', ['liquor_form' => $liquor]);
+
+      return view('liquor.detail', ['liquor_form' => $liquor, 'nice' => $nice], compact('liquor', 'nice'));
   }
   
 }

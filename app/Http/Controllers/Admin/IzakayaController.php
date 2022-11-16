@@ -101,10 +101,11 @@ class IzakayaController extends Controller
       return view('admin.izakaya.edit', ['izakaya_form' => $izakaya]);
   }
   
-    public function detail(Izakaya $izakaya, Request $request)
+  public function detail(Izakaya $izakaya, Request $request)
   {
+      $ip = $request->ip();
       $izakaya = Izakaya::find($request->id);
-      $nice_izakaya=Nice_izakaya::where('izakaya_id', $izakaya->id)->where('user_id', auth()->user()->id)->exists();
+      $nice_izakaya=Nice_izakaya::where('izakaya_id', $izakaya->id)->where('ip', $ip)->exists();
       if (empty($izakaya)) {
         abort(404);    
       }

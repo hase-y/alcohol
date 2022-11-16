@@ -79,4 +79,9 @@ Route::get('knob/shihan', 'KnobController@shihan');
 Route::get('knob/tezukuri', 'KnobController@tezukuri');
 Route::get('knob/detail', 'KnobController@detail');
 // いいねボタン
-
+Route::get('liquor/detail/nice/{liquor}', 'NiceController@nice')->name('nice');
+Route::get('liquor/detail/unnice/{liquor}', 'NiceController@unnice')->name('unnice');
+Route::get('izakaya/detail/nice_izakaya/{izakaya}', 'NiceController@nice_izakaya')->name('nice_izakaya');
+Route::get('izakaya/detail/unnice_izakaya/{izakaya}', 'NiceController@unnice_izakaya')->name('unnice_izakaya');
+Route::get('knob/detail/nice_knob/{knob}', 'NiceController@nice_knob')->name('nice_knob');
+Route::get('knob/detail/unnice_knob/{knob}', 'NiceController@unnice_knob')->name('unnice_knob');

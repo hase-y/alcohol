@@ -101,8 +101,10 @@ class KnobController extends Controller
   
     public function detail(Knob $knob, Request $request)
   {
+      $ip = $request->ip();
       $knob = Knob::find($request->id);
-      $nice_knob=Nice_knob::where('knob_id', $knob->id)->where('user_id', auth()->user()->id)->exists();
+      $nice_knob=Nice_knob::where('knob_id', $knob->id)->where('ip', $ip)->exists();
+      
       if (empty($knob)) {
         abort(404);    
       }

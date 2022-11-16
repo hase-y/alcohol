@@ -157,8 +157,9 @@ class LiquorController extends Controller
   
   public function detail(Liquor $liquor, Request $request)
   {   
+      $ip = $request->ip();
       $liquor = Liquor::find($request->id);
-      $nice=Nice::where('liquor_id', $liquor->id)->where('user_id', auth()->user()->id)->exists();
+      $nice=Nice::where('liquor_id', $liquor->id)->where('ip', $ip)->exists();
       
       if (empty($liquor)) {
         abort(404);    

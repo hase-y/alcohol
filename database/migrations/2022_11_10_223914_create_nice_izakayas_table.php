@@ -17,7 +17,7 @@ class CreateNiceIzakayasTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('izakaya_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->string('ip')->nullable();
+            $table->string('user_ip')->nullable();
             $table->timestamps();
         });
     }

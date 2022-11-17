@@ -105,7 +105,7 @@ class IzakayaController extends Controller
   {
       $ip = $request->ip();
       $izakaya = Izakaya::find($request->id);
-      $nice_izakaya=Nice_izakaya::where('izakaya_id', $izakaya->id)->where('ip', $ip)->exists();
+      $nice_izakaya=Nice_izakaya::where('izakaya_id', $izakaya->id)->where('user_ip', $ip)->exists();
       if (empty($izakaya)) {
         abort(404);    
       }

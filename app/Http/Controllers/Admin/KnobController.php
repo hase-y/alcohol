@@ -103,7 +103,7 @@ class KnobController extends Controller
   {
       $ip = $request->ip();
       $knob = Knob::find($request->id);
-      $nice_knob=Nice_knob::where('knob_id', $knob->id)->where('ip', $ip)->exists();
+      $nice_knob=Nice_knob::where('knob_id', $knob->id)->where('user_ip', $ip)->exists();
       
       if (empty($knob)) {
         abort(404);    

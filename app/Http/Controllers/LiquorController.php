@@ -82,7 +82,7 @@ class LiquorController extends Controller
   {   
       $ip = $request->ip();
       $liquor = Liquor::find($request->id);
-      $nice=Nice::where('liquor_id', $liquor->id)->where('ip', $ip)->exists();
+      $nice=Nice::where('liquor_id', $liquor->id)->where('user_ip', $ip)->exists();
       
       if (empty($liquor)) {
         abort(404);    

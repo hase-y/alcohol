@@ -42,7 +42,7 @@
         </div>
         <br>
         <div class="page">
-            {{ $posts->links() }}
+            {{ $posts->appends(request()->query())->links() }}
         </div>
     </div>
 @endsection

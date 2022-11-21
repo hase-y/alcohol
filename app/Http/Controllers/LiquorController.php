@@ -11,15 +11,49 @@ class LiquorController extends Controller
     public function index(Request $request)
   {
       $search = $request->search;
-      if ($search != '') {
-        $posts = Liquor::where('zyanru', 'like',  "%$search%")
+      $value_search_low = $request->value_search_low;
+      $value_search_high = $request->value_search_high;
+      if($search != ''){
+        if($value_search_low != '' && $value_search_high != ''){
+          $posts = Liquor::where('value', '>=', $value_search_low)
+                          ->where('value', '<=', $value_search_high)
+                          ->where(function($q) use($search){
+                            $q->where('zyanru', 'like',  "%$search%");
+                            $q->orWhere('name', 'like',  "%$search%");
+                            $q->orWhere('comment', 'like',  "%$search%");
+                            })->paginate(12);
+        }elseif($value_search_low != '' && $value_search_high == ''){
+          $posts = Liquor::where('value', '>=', $value_search_low)
+                          ->where(function($q) use($search){
+                            $q->where('zyanru', 'like',  "%$search%");
+                            $q->orWhere('name', 'like',  "%$search%");
+                            $q->orWhere('comment', 'like',  "%$search%");
+                            })->paginate(12);
+        }elseif($value_search_low == '' && $value_search_high != ''){
+          $posts = Liquor::where('value', '<=', $value_search_high)
+                          ->where(function($q) use($search){
+                            $q->where('zyanru', 'like',  "%$search%");
+                            $q->orWhere('name', 'like',  "%$search%");
+                            $q->orWhere('comment', 'like',  "%$search%");
+                            })->paginate(12);
+        }else{
+          $posts = Liquor::where('zyanru', 'like',  "%$search%")
                           ->orWhere('name', 'like',  "%$search%")
-                          ->orWhere('value', 'like',  "%$search%")
                           ->orWhere('comment', 'like',  "%$search%")->paginate(12);
-      } else {
-        $posts = Liquor::paginate(12);
+        }
+      }else{
+        if($value_search_low != '' && $value_search_high != ''){
+          $posts = Liquor::where('value', '>=', $value_search_low)
+                         ->where('value', '<=', $value_search_high)->paginate(12);
+        }elseif($value_search_low != '' && $value_search_high == ''){
+          $posts = Liquor::where('value', '>=', $value_search_low)->paginate(12);
+        }elseif($value_search_low == '' && $value_search_high != ''){
+          $posts = Liquor::where('value', '<=', $value_search_high)->paginate(12);
+        }else{
+          $posts = Liquor::paginate(12);
+        }
       }
-      return view('liquor.index', ['posts' => $posts, 'search' => $search ]);
+      return view('liquor.index', ['posts' => $posts, 'search' => $search, 'value_search_low' => $value_search_low, 'value_search_high' => $value_search_high ]);
   }
   
   public function beer(Request $request)

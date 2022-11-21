@@ -9,19 +9,56 @@ use App\Nice_knob;
 
 class KnobController extends Controller
 {
-    public function index(Request $request)
+  public function index(Request $request)
   {
-      $search = $request->search;
+    $search = $request->search;
+    $value_search_low = $request->value_search_low;
+    $value_search_high = $request->value_search_high;
         if ($search != '') {
-          $posts = Knob::where('zyanru', 'like',  "%$search%")
-                            ->orWhere('product', 'like',  "%$search%")
-                            ->orWhere('value', 'like',  "%$search%")
-                            ->orWhere('comment', 'like',  "%$search%")
-                            ->orWhere('matching_liquor', 'like',  "%$search%")->paginate(12);
-      } else {
-        $posts = Knob::paginate(12);
+          if($value_search_low != '' && $value_search_high != ''){
+            $posts = Knob::where('value', '>=', $value_search_low)
+                          ->where('value', '<=', $value_search_high)
+                          ->where(function($q) use($search){
+                            $q->where('zyanru', 'like',  "%$search%");
+                            $q->orWhere('product', 'like',  "%$search%");
+                            $q->orWhere('comment', 'like',  "%$search%");
+                            $q->orWhere('matching_liquor', 'like',  "%$search%");
+                            })->paginate(12);
+          }elseif($value_search_low != '' && $value_search_high == ''){
+            $posts = Knob::where('value', '>=', $value_search_low)
+                          ->where(function($q) use($search){
+                            $q->where('zyanru', 'like',  "%$search%");
+                            $q->orWhere('product', 'like',  "%$search%");
+                            $q->orWhere('comment', 'like',  "%$search%");
+                            $q->orWhere('matching_liquor', 'like',  "%$search%");
+                            })->paginate(12);
+          }elseif($value_search_low == '' && $value_search_high != ''){
+            $posts = Knob::where('value', '<=', $value_search_high)
+                          ->where(function($q) use($search){
+                            $q->where('zyanru', 'like',  "%$search%");
+                            $q->orWhere('product', 'like',  "%$search%");
+                            $q->orWhere('comment', 'like',  "%$search%");
+                            $q->orWhere('matching_liquor', 'like',  "%$search%");
+                            })->paginate(12);
+          }else{
+            $posts = Knob::where('zyanru', 'like',  "%$search%")
+                          ->orWhere('product', 'like',  "%$search%")
+                          ->orWhere('comment', 'like',  "%$search%")
+                          ->orWhere('matching_liquor', 'like',  "%$search%")->paginate(12);
+          }
+      }else{
+        if($value_search_low != '' && $value_search_high != ''){
+          $posts = Knob::where('value', '>=', $value_search_low)
+                         ->where('value', '<=', $value_search_high)->paginate(12);
+        }elseif($value_search_low != '' && $value_search_high == ''){
+          $posts = Knob::where('value', '>=', $value_search_low)->paginate(12);
+        }elseif($value_search_low == '' && $value_search_high != ''){
+          $posts = Knob::where('value', '<=', $value_search_high)->paginate(12);
+        }else{
+          $posts = Knob::paginate(12);
+        }
       }
-      return view('knob.index', ['posts' => $posts, 'search' => $search ]);
+      return view('knob.index', ['posts' => $posts, 'search' => $search, 'value_search_low' => $value_search_low, 'value_search_high' => $value_search_high ]);
   }
   
   public function shihan(Request $request)

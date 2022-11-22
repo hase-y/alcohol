@@ -112,24 +112,6 @@ class LiquorController extends Controller
       }
       return view('admin.liquor.index', ['posts' => $posts, 'search' => $search, 'value_search_low' => $value_search_low, 'value_search_high' => $value_search_high, 'rogin_id' => $rogin_id ]);
   }
-  
-  // public function value_search(Request $request)
-  // {
-  //   $rogin_id = Auth::id();
-  //   $value_search_low = $request->value_search_low;
-  //   $value_search_high = $request->value_search_high;
-  //   if($value_search_low != '' && $value_search_high != ''){
-  //     $posts = Liquor::where('value', '>=', $value_search_low)
-  //                       ->where('value', '<=', $value_search_high)->paginate(12);
-  //   }elseif($value_search_low != ''){
-  //     $posts = Liquor::where('value', '>=', $value_search_low)->paginate(12);
-  //   }elseif($value_search_high != ''){
-  //     $posts = Liquor::where('value', '<=', $value_search_high)->paginate(12);
-  //   }else{
-  //     $posts = Liquor::paginate(12);
-  //   }
-  //   return view('admin.liquor.index', ['posts' => $posts, 'value_search_low' => $value_search_low, 'value_search_high' => $value_search_high, 'rogin_id' => $rogin_id ]);
-  // }
 
   public function beer(Request $request)
   {
@@ -226,11 +208,9 @@ class LiquorController extends Controller
       $liquor = Liquor::find($request->id);
       $liquor_form = $request->all();
       
-      if ($request->remove == 'true') {
-          // $img_path = "storage/image/Noimage.jpg";
-          // $liquor_form['image_path'] = basename($img_path);
+      if($request->remove == 'true'){
           $liquor_form['image_path'] = "https://alcohollover.s3.ap-northeast-1.amazonaws.com/NDYeffScu8bjMhkm5z5kYmx9Zc3ddsouxP9GGW87.jpg";
-      } elseif ($request->file('image')) {
+      }elseif ($request->file('image')){
           $img_file = $liquor_form['image'];
           $extension = $img_file->extension();
           //ファイル名作成
@@ -246,7 +226,7 @@ class LiquorController extends Controller
             )->save($local_img_path);
           $img_path = Storage::disk('s3')->putFile('/', new File($local_img_path),'public');
           $liquor_form['image_path'] = Storage::disk('s3')->url($img_path);
-      } else {
+      }else{
           $liquor_form['image_path'] = $liquor->image_path;
       }
 

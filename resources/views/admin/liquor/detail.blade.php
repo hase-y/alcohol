@@ -56,22 +56,34 @@
                         <!-- もし$niceがあれば＝ユーザーが「いいね」をしていたら -->
                         @if($nice)
                         <!-- 「いいね」取消用ボタンを表示 -->
-                        <a href="{{ route('unnice', $liquor) }}" class="btn btn-success btn-sm">
-                        	いいね
-                        	<!-- 「いいね」の数を表示 -->
-                        	<span class="badge">
-                        		{{ $liquor->nices->count() }}
-                        	</span>
-                        </a>
+                        <div class="good">
+                            <ul>
+                                <a href="{{ route('unnice', $liquor) }}">
+                                	<li><img src="https://alcohollover.s3.ap-northeast-1.amazonaws.com/XKMh3BiLFKbjaGnq53njgM9E3LBCbjM23ia5SIEf.jpg"></li>
+                                	<!-- 「いいね」の数を表示 -->
+                                	<li>いいね
+                                    	<span class="badge">
+                                    		{{ $liquor->nices->count() }}
+                                    	</span>
+                                    </li>
+                                </a>
+                            </ul>
+                        </div>
                         @else
                         <!-- まだユーザーが「いいね」をしていなければ、「いいね」ボタンを表示 -->
-                        <a href="{{ route('nice', $liquor) }}" class="btn btn-secondary btn-sm">
-                        	いいね
-                        	 <!--「いいね」の数を表示 -->
-                        	<span class="badge">
-                        	    {{ $liquor->nices->count() }}
-                        	</span>
-                        </a>
+                        <div class="good">
+                            <ul>
+                                <a href="{{ route('nice', $liquor) }}">
+                                    <li><img src="https://alcohollover.s3.ap-northeast-1.amazonaws.com/IchuOb76Clji4UPixUilhgHfrgt3yKRBaONI65cO.jpg"></li>
+                                	<!--「いいね」の数を表示 -->
+                                	<li>いいね
+                                	    <span class="badge">
+                                	    {{ $liquor->nices->count() }}
+                                	    </span>
+                                	</li>
+                                </a>
+                            </ul>
+                        </div>
                         @endif
                     </span>
                 </form>

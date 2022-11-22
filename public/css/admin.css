@@ -76,6 +76,20 @@ h2 {
   color: #000;
 }
 
+.good li {
+  list-style: none;
+  display: inline-block;
+}
+
+.good img {
+  width: 50px;
+  height: 50px;
+}
+
+.badge {
+  font-size: medium;
+}
+
 .index_name {
   font-weight: bold;
 }

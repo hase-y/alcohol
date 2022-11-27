@@ -29,6 +29,11 @@
                         </div>
                         <br>
                         <div class="liquor_explanation">
+                            <label class="col-md-20">ジャンル</label>
+                            <div class="col-md-30">
+                                <a>　{{ $liquor_form->zyanru }}</a>
+                            </div>
+                            <br>
                             <label class="col-md-20">お酒の名前</label>
                             <div class="col-md-30">
                                 <a>　{{ $liquor_form->name }}</a>

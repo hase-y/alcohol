@@ -26,15 +26,15 @@
         <div class="row">
             <div class="col-md-8"></div>
             <div class="search col-md-4">
-                <form action="{{ action('Admin\LiquorController@index') }}" method="get">
+                <form action="{{ action('LiquorController@index') }}" method="get">
                 <input type="text" class="search" name="search" placeholder="キーワードで絞り込み" value="{{ $search }}">
                 <br>
                 <input type="text" class="value_search" name="value_search_low" placeholder="価格で絞り込み" value="{{ $value_search_low }}">
                 ～
                 <input type="text" class="value_search" name="value_search_high" placeholder="価格で絞り込み" value="{{ $value_search_high }}">
-                 @csrf
-                 <br>
-                <input type="submit" class="search  btn btn-outline-dark" value="検索">
+                <br>
+                @csrf
+                <input type="submit" class="search btn btn-outline-dark" value="検索">
             </div>
         </div>
         <br>

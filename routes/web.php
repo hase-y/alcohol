@@ -50,7 +50,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::get('izakaya/others', 'Admin\IzakayaController@others');
     Route::get('izakaya/detail', 'Admin\IzakayaController@detail');
     // いいねボタン
-    Route::get('liquor/detail/nice/{liquor}', 'Admin\NiceController@nice')->name('nice');
+    //Route::get('liquor/detail/nice/{liquor}', 'Admin\NiceController@nice')->name('nice');
+    Route::post('liquor/detail/nice/{liquor}', 'Admin\NiceController@nice')->name('nice');
     Route::get('liquor/detail/unnice/{liquor}', 'Admin\NiceController@unnice')->name('unnice');
     Route::get('izakaya/detail/nice_izakaya/{izakaya}', 'Admin\NiceController@nice_izakaya')->name('nice_izakaya');
     Route::get('izakaya/detail/unnice_izakaya/{izakaya}', 'Admin\NiceController@unnice_izakaya')->name('unnice_izakaya');

@@ -7,6 +7,7 @@
 {{-- admin.blade.phpの@yield('content')に以下のタグを埋め込む --}}
 {{-- @section @yeildに情報を表示する --}}
 @section('content')
+    <script src="{{ asset('/js/nice.js') }}"></script>
     <div class="container">
         <div class="row">
             <div class="col-md-8 mx-auto">
@@ -51,7 +52,8 @@
                             </div>
                         </div>
                     </div>
-                    <br>
+                </form>
+                <br>
                     <span>
                         <!-- もし$niceがあれば＝ユーザーが「いいね」をしていたら -->
                         @if($nice)
@@ -70,23 +72,24 @@
                             </ul>
                         </div>
                         @else
+                        <form method = "POST" action= "/detail/nice">
                         <!-- まだユーザーが「いいね」をしていなければ、「いいね」ボタンを表示 -->
                         <div class="good">
-                            <ul>
-                                <a href="{{ route('nice', $liquor) }}">
+                            <ul class="nice">
+                                <button onclick="nice({{$liquor}})">
                                     <li><img src="https://alcohollover.s3.ap-northeast-1.amazonaws.com/IchuOb76Clji4UPixUilhgHfrgt3yKRBaONI65cO.jpg"></li>
                                 	<!--「いいね」の数を表示 -->
                                 	<li>いいね
                                 	    <span class="badge">
-                                	    {{ $liquor->nices->count() }}
+                                	        {{ $liquor->nices->count() }}
                                 	    </span>
                                 	</li>
-                                </a>
+                                </button>
                             </ul>
                         </div>
+                        </form>
                         @endif
                     </span>
-                </form>
              </div>
         </div>
     </div>

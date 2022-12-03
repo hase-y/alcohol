@@ -2,7 +2,7 @@
 @section('title', 'ホーム')
 
 @section('content')
-<script src="{{ mix('js/homeslide.js') }}" defer></script>
+<script src="{{ asset('/js/homeslide.js') }}"></script>
     <div class="container">
         <h2>お酒好きのサイト</h2>
         <br>
@@ -25,6 +25,31 @@
             </div>
         </div>
         <br>
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
+        <!--<script type="text/javascript">-->
+        <!--$(document).ready(function(){-->
+        <!--  $('.list-liquor, .list-izakaya, .list-knob').slick({-->
+        <!--    autoplay: true, -->
+        <!--    infinite: true, -->
+        <!--    dots: true, -->
+        <!--    slidesToShow: 6, -->
+        <!--    slidesToScroll: 6,-->
+        <!--    responsive: [{-->
+        <!--      breakpoint: 768,-->
+        <!--      settings: {-->
+        <!--        slidesToShow: 3,-->
+        <!--        slidesToScroll: 3,-->
+        <!--      }-->
+        <!--    }, {-->
+        <!--      breakpoint: 480,-->
+        <!--      settings: {-->
+        <!--        slidesToShow: 2,-->
+        <!--        slidesToScroll: 2,-->
+        <!--      }-->
+        <!--    }]-->
+        <!--  });-->
+        <!--});-->
+        <!--</script>-->
         <div class="list-liquor">
             @foreach($posts_liquor as $liquor)
                 <div class="item">

@@ -57,6 +57,7 @@
                         <!-- 「いいね」取消用ボタンを表示 -->
                         <div class="good">
                             <ul>
+                                
                                 <a href="{{ route('unnice', $liquor) }}">
                                 	<li><img src="https://alcohollover.s3.ap-northeast-1.amazonaws.com/XKMh3BiLFKbjaGnq53njgM9E3LBCbjM23ia5SIEf.jpg"></li>
                                 	<!-- 「いいね」の数を表示 -->

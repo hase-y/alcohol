@@ -59,7 +59,7 @@ return [
     'image' => 'The :attribute must be an image.',
     'in' => 'The selected :attribute is invalid.',
     'in_array' => 'The :attribute field does not exist in :other.',
-    'integer' => 'The :attribute must be an integer.',
+    'integer' => ':attribute には数字を入力してください。',
     'ip' => 'The :attribute must be a valid IP address.',
     'ipv4' => 'The :attribute must be a valid IPv4 address.',
     'ipv6' => 'The :attribute must be a valid IPv6 address.',
@@ -157,7 +157,9 @@ return [
         'store' => '[店名]',
         'recommendation' => '[おすすめの一品]',
         'cooking' => '[料理名]',
-        'recipe' => '[レシピ]'
+        'recipe' => '[レシピ]',
+        'value_search_low' => '価格で絞り込み',
+        'value_search_high' => '価格で絞り込み'
     ],
 
 ];

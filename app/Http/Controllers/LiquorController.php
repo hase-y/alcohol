@@ -13,6 +13,10 @@ class LiquorController extends Controller
       $search = $request->search;
       $value_search_low = $request->value_search_low;
       $value_search_high = $request->value_search_high;
+      $request->validate([       
+          'value_search_low' => 'integer',
+          'value_search_high' => 'integer',
+      ]);
       if($search != ''){
         if($value_search_low != '' && $value_search_high != ''){
           $posts = Liquor::where('value', '>=', $value_search_low)

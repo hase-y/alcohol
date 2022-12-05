@@ -29,6 +29,8 @@
                 @csrf
                 <br>
                 <input type="submit" class="btn btn-outline-dark" value="検索">
+                <br>
+                <p class="validation">{{ $errors->first() }}</p>
             </div>
         </div>
         <br>

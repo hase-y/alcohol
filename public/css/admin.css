@@ -72,6 +72,10 @@ h2 {
   text-align: right;
 }
 
+.validation {
+  color: red;
+}
+
 .detail {
   color: #000;
 }

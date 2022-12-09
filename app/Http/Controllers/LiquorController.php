@@ -14,8 +14,8 @@ class LiquorController extends Controller
       $value_search_low = $request->value_search_low;
       $value_search_high = $request->value_search_high;
       $request->validate([       
-          'value_search_low' => 'integer',
-          'value_search_high' => 'integer',
+          'value_search_low' => 'integer|nullable',
+          'value_search_high' => 'integer|nullable',
       ]);
       if($search != ''){
         if($value_search_low != '' && $value_search_high != ''){

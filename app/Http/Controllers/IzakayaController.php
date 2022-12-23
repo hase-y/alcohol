@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Izakaya;
 use App\Nice_izakaya;
+use App\IzakayaComment;
 
 class IzakayaController extends Controller
 {
@@ -47,7 +48,10 @@ class IzakayaController extends Controller
       if (empty($izakaya)) {
         abort(404);    
       }
-      return view('izakaya.detail', ['izakaya_form' => $izakaya, 'nice_izakaya' => $nice_izakaya], compact('izakaya', 'nice_izakaya'));
+      
+      $posts = IzakayaComment::all();
+      
+      return view('izakaya.detail', ['posts' => $posts, 'izakaya_form' => $izakaya, 'nice_izakaya' => $nice_izakaya], compact('izakaya', 'nice_izakaya'));
   }
   
 }

@@ -7,6 +7,7 @@ use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use App\Knob;
 use App\Nice_knob;
+use App\KnobComment;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image; 
 use Storage;
@@ -149,7 +150,11 @@ class KnobController extends Controller
       if (empty($knob)) {
         abort(404);    
       }
-      return view('admin.knob.detail', ['knob_form' => $knob, 'nice_knob' => $nice_knob], compact('knob', 'nice_knob'));
+      
+      $rogin_id = Auth::id();
+      $posts = KnobComment::all();
+      
+      return view('admin.knob.detail', ['posts' => $posts, 'knob_form' => $knob, 'nice_knob' => $nice_knob, 'rogin_id' => $rogin_id], compact('knob', 'nice_knob'));
   }
   
   

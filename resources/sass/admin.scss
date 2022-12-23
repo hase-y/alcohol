@@ -94,6 +94,26 @@ h2 {
   font-size:medium;
 }
 
+.commentform {
+  display: flex;
+}
+
+.form-control{
+  margin: 5px;
+}
+
+.username{
+  font-weight:bold;
+  font-size:small;
+}
+
+.destroy {
+  float: right;
+  font-weight: normal;
+  font-size: medium;
+  margin-right: 5px;
+}
+
 .index_name {
   font-weight: bold;
 }

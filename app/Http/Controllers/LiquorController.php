@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Liquor;
 use App\Nice;
+use App\LiquorComment;
 
 class LiquorController extends Controller
 {
@@ -125,8 +126,10 @@ class LiquorController extends Controller
       if (empty($liquor)) {
         abort(404);    
       }
+      
+      $posts = LiquorComment::all();
 
-      return view('liquor.detail', ['liquor_form' => $liquor, 'nice' => $nice], compact('liquor', 'nice'));
+      return view('liquor.detail', ['posts' => $posts, 'liquor_form' => $liquor, 'nice' => $nice], compact('liquor', 'nice'));
   }
   
 }

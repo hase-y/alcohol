@@ -88,6 +88,26 @@ h2 {
   height:50px;
 }
 
+.commentform {
+  display: flex;
+}
+
+.form-control{
+  margin: 5px;
+}
+
+.username{
+  font-weight:bold;
+  font-size:small;
+}
+
+.destroy {
+  float: right;
+  font-weight: normal;
+  font-size: medium;
+  margin-right: 5px;
+}
+
 .badge{
   font-size:medium;
 }

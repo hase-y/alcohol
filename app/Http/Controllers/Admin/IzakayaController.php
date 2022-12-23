@@ -7,6 +7,7 @@ use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use App\Izakaya;
 use App\Nice_izakaya;
+use App\IzakayaComment;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image; 
 use Storage;
@@ -59,7 +60,7 @@ class IzakayaController extends Controller
       return redirect('admin/izakaya');
   }
   
-   public function index(Request $request)
+  public function index(Request $request)
   {
     $rogin_id = Auth::id();
     $search = $request->search;
@@ -109,7 +110,11 @@ class IzakayaController extends Controller
       if (empty($izakaya)) {
         abort(404);    
       }
-      return view('admin.izakaya.detail', ['izakaya_form' => $izakaya, 'nice_izakaya' => $nice_izakaya], compact('izakaya', 'nice_izakaya'));
+      
+      $rogin_id = Auth::id();
+      $posts = IzakayaComment::all();
+      
+      return view('admin.izakaya.detail', ['posts' => $posts, 'izakaya_form' => $izakaya, 'nice_izakaya' => $nice_izakaya, 'rogin_id' => $rogin_id], compact('izakaya', 'nice_izakaya'));
   }
   
   

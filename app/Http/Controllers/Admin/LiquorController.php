@@ -7,6 +7,7 @@ use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use App\Liquor;
 use App\Nice;
+use App\LiquorComment;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image; 
 use Storage;
@@ -21,9 +22,10 @@ class LiquorController extends Controller
   public function create(Request $request)
   {
       $this->validate($request, Liquor::$rules);
-
+      
       $liquor = new Liquor;
       $form = $request->all();
+      //dd($form);
       $id = Auth::id();
 
       if (isset($form['image'])) {
@@ -39,14 +41,11 @@ class LiquorController extends Controller
           $constraint->aspectRatio();
           $constraint->upsize();
         }
-          //)->save(storage_path(). '/app/public/image/'. $img_name);
           )->save($local_img_path);
         // $img_path = 'storage/image/'.$img_name;
         $img_path = Storage::disk('s3')->putFile('/', new File($local_img_path),'public');
-        // $liquor->image_path = basename($img_path);
         $liquor->image_path = Storage::disk('s3')->url($img_path);
       } else {
-        // $liquor->image_path = "/storage/image/Noimage.jpg";
         $liquor->image_path = "https://alcohollover.s3.ap-northeast-1.amazonaws.com/NDYeffScu8bjMhkm5z5kYmx9Zc3ddsouxP9GGW87.jpg";
       }
 
@@ -55,7 +54,6 @@ class LiquorController extends Controller
       // フォームから送信されてきたimageを削除する
       unset($form['image']);
       
-
       // データベースに保存する
       $liquor->user_id = $id;
       $liquor->fill($form);
@@ -202,8 +200,11 @@ class LiquorController extends Controller
       if (empty($liquor)) {
         abort(404);    
       }
+      
+      $rogin_id = Auth::id();
+      $posts = LiquorComment::all();
 
-      return view('admin.liquor.detail', ['liquor_form' => $liquor, 'nice' => $nice], compact('liquor', 'nice'));
+      return view('admin.liquor.detail', ['posts' => $posts, 'liquor_form' => $liquor, 'nice' => $nice, 'rogin_id' => $rogin_id], compact('liquor', 'nice'));
   }
   
   public function update(Request $request)

@@ -24,4 +24,8 @@ class Izakaya extends Model
     public function nice_izakayas() {
         return $this->hasMany('App\Nice_izakaya');
     }
+    
+    public function izakaya_comments() {
+        return $this->hasMany('App\Models\IzakayaComment');
+    }
 }

@@ -57,8 +57,7 @@
                                 <a class="edit" href="{{ action('Admin\LiquorController@edit', ['id' => $liquor->id]) }}">編集</a>
                                 <a class="delete" href="{{ action('Admin\LiquorController@delete', ['id' => $liquor->id]) }}">削除</a>
                                 @else
-                                <a class="edit">編集</a>
-                                <a class="delete">削除</a>
+                                <p></p>
                                 @endif
                             </div>
                         </li>

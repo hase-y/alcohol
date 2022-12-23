@@ -51,12 +51,18 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::get('izakaya/detail', 'Admin\IzakayaController@detail');
     // いいねボタン
     Route::get('liquor/detail/nice/{liquor}', 'Admin\NiceController@nice')->name('nice');
-    //Route::post('liquor/detail/nice/{liquor}', 'Admin\NiceController@nice')->name('nice');
     Route::get('liquor/detail/unnice/{liquor}', 'Admin\NiceController@unnice')->name('unnice');
     Route::get('izakaya/detail/nice_izakaya/{izakaya}', 'Admin\NiceController@nice_izakaya')->name('nice_izakaya');
     Route::get('izakaya/detail/unnice_izakaya/{izakaya}', 'Admin\NiceController@unnice_izakaya')->name('unnice_izakaya');
     Route::get('knob/detail/nice_knob/{knob}', 'Admin\NiceController@nice_knob')->name('nice_knob');
     Route::get('knob/detail/unnice_knob/{knob}', 'Admin\NiceController@unnice_knob')->name('unnice_knob');
+    //コメント
+    Route::post('liquor/detail/{liquor}', 'Admin\CommentsController@liquorstore');
+    Route::get('liquor/detail/liquordestroy', 'Admin\CommentsController@liquordestroy');
+    Route::post('izakaya/detail/{izakaya}', 'Admin\CommentsController@izakayastore');
+    Route::get('izakaya/detail/izakayadestroy', 'Admin\CommentsController@izakayadestroy');
+    Route::post('knob/detail/{knob}', 'Admin\CommentsController@knobstore');
+    Route::get('knob/detail/knobdestroy', 'Admin\CommentsController@knobdestroy');
 });
 Auth::routes();
 

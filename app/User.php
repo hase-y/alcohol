@@ -60,4 +60,16 @@ class User extends Authenticatable
     public function nice_knobs() {
         return $this->hasMany('App\Models\Nice_knob');
     }
+    
+    public function liquor_comments() {
+        return $this->hasMany('App\Models\LiquorComment');
+    }
+    
+    public function izakaya_comments() {
+        return $this->hasMany('App\Models\IzakayaComment');
+    }
+    
+    public function knob_comments() {
+        return $this->hasMany('App\Models\KnobComment');
+    }
 }

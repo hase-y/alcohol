@@ -147,17 +147,17 @@ return [
     */
 
     'attributes' => [
-        'zyanru' => '[ジャンル]',
-        'name' => '[お酒の名前]',
-        'comment' => '[コメント]',
-        'value' => '[価格]',
-        'product' => '[商品名]',
-        'cooking' => '[料理名]',
-        'matching_liquor' => '[合うお酒]',
-        'store' => '[店名]',
-        'recommendation' => '[おすすめの一品]',
-        'cooking' => '[料理名]',
-        'recipe' => '[レシピ]',
+        'zyanru' => 'ジャンル',
+        'name' => 'お酒の名前',
+        'comment' => 'コメント',
+        'value' => '価格',
+        'product' => '商品名',
+        'cooking' => '料理名',
+        'matching_liquor' => '合うお酒',
+        'store' => '店名',
+        'recommendation' => 'おすすめの一品',
+        'cooking' => '料理名',
+        'recipe' => 'レシピ',
         'value_search_low' => '価格で絞り込み',
         'value_search_high' => '価格で絞り込み'
     ],

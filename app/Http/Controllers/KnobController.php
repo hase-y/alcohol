@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Knob;
 use App\Nice_knob;
-
+use App\KnobComment;
 
 class KnobController extends Controller
 {
@@ -88,6 +88,9 @@ class KnobController extends Controller
       if (empty($knob)) {
         abort(404);    
       }
-      return view('knob.detail', ['knob_form' => $knob, 'nice_knob' => $nice_knob], compact('knob', 'nice_knob'));
+      
+      $posts = KnobComment::all();
+      
+      return view('knob.detail', ['posts' => $posts, 'knob_form' => $knob, 'nice_knob' => $nice_knob], compact('knob', 'nice_knob'));
   }
 }

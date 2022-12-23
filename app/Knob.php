@@ -23,4 +23,8 @@ class Knob extends Model
     public function nice_knobs() {
         return $this->hasMany('App\Nice_knob');
     }
+    
+    public function knob_comments() {
+        return $this->hasMany('App\Models\KnobComment');
+    }
 }

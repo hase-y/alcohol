@@ -22,4 +22,8 @@ class Liquor extends Model
     public function nices() {
         return $this->hasMany('App\Nice');
     }
+    
+    public function liquor_comments() {
+        return $this->hasMany('App\Models\LiquorComment');
+    }
 }

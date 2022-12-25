@@ -13,7 +13,7 @@
                         <li>ジャンル別に表示</li>
                         <li><a href = "liquor/beer">ビール</a></li>
                         <li><a href = "liquor/wine">ワイン</a></li>
-                        <li><a href = "liquor/whiskey">ウィスキー</a></li>
+                        <li><a href = "liquor/whiskey">ウイスキー</a></li>
                         <li><a href = "liquor/shochu">焼酎</a></li>
                         <li><a href = "liquor/sake">日本酒</a></li>
                         <li><a href = "liquor/sour">サワー</a></li>

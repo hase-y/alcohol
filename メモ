@@ -68,30 +68,5 @@ composer require intervention/image　実行
 LiquorControllerに処理記載
 GD Library extension not available with this PHP installation.　発生
 
-$(document).ready(function(){
-          $('.list-liquor').slick({
-            autoplay: true, 
-            infinite: true, 
-            dots: true, 
-            slidesToShow: 6, 
-            slidesToScroll: 6,
-            responsive: [{
-              breakpoint: 768,
-              settings: {
-                slidesToShow: 3,
-                slidesToScroll: 3,
-              }
-            }, {
-              breakpoint: 480,
-              settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2,
-              }
-            }]
-          });
-        });
-        
-        
-        <span class="badge">
-                        	    {{ $liquor->nices->count() }}
-                        	</span>
+ヘロクデプロイに役立つ
+https://qiita.com/tamappe/items/14a4e6890ecef4d49d1f

@@ -14,9 +14,9 @@ use Storage;
 
 class LiquorController extends Controller
 {
-     public function add()
+  public function add()
   {
-      return view('admin.liquor.create');
+  return view('admin.liquor.create');
   }
  
   public function create(Request $request)
@@ -202,8 +202,8 @@ class LiquorController extends Controller
       }
       
       $rogin_id = Auth::id();
-      $posts = LiquorComment::all();
-
+      $posts = LiquorComment::where('liquor_id', $liquor->id)->get();
+      //dd($liquor->id);
       return view('admin.liquor.detail', ['posts' => $posts, 'liquor_form' => $liquor, 'nice' => $nice, 'rogin_id' => $rogin_id], compact('liquor', 'nice'));
   }
   

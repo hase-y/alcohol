@@ -127,7 +127,7 @@ class LiquorController extends Controller
         abort(404);    
       }
       
-      $posts = LiquorComment::all();
+      $posts = LiquorComment::where('liquor_id', $liquor->id)->get();
 
       return view('liquor.detail', ['posts' => $posts, 'liquor_form' => $liquor, 'nice' => $nice], compact('liquor', 'nice'));
   }

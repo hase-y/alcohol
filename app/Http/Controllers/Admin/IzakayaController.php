@@ -112,7 +112,7 @@ class IzakayaController extends Controller
       }
       
       $rogin_id = Auth::id();
-      $posts = IzakayaComment::all();
+      $posts = IzakayaComment::where('izakaya_id', $izakaya->id)->get();
       
       return view('admin.izakaya.detail', ['posts' => $posts, 'izakaya_form' => $izakaya, 'nice_izakaya' => $nice_izakaya, 'rogin_id' => $rogin_id], compact('izakaya', 'nice_izakaya'));
   }

@@ -152,7 +152,7 @@ class KnobController extends Controller
       }
       
       $rogin_id = Auth::id();
-      $posts = KnobComment::all();
+      $posts = KnobComment::where('knob_id', $knob->id)->get();
       
       return view('admin.knob.detail', ['posts' => $posts, 'knob_form' => $knob, 'nice_knob' => $nice_knob, 'rogin_id' => $rogin_id], compact('knob', 'nice_knob'));
   }

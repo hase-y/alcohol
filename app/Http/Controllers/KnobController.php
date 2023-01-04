@@ -89,7 +89,7 @@ class KnobController extends Controller
         abort(404);    
       }
       
-      $posts = KnobComment::all();
+      $posts = KnobComment::where('knob_id', $knob->id)->get();
       
       return view('knob.detail', ['posts' => $posts, 'knob_form' => $knob, 'nice_knob' => $nice_knob], compact('knob', 'nice_knob'));
   }

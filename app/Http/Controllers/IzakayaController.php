@@ -49,7 +49,7 @@ class IzakayaController extends Controller
         abort(404);    
       }
       
-      $posts = IzakayaComment::all();
+      $posts = IzakayaComment::where('izakaya_id', $izakaya->id)->get();
       
       return view('izakaya.detail', ['posts' => $posts, 'izakaya_form' => $izakaya, 'nice_izakaya' => $nice_izakaya], compact('izakaya', 'nice_izakaya'));
   }
